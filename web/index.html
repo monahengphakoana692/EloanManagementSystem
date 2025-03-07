@@ -67,20 +67,85 @@
                 font-size: 50px;
             }
            
-                body {
-                        background-image: linear-gradient(rgba(0, 0, 90, 0.7), rgba(100, 206, 235, 0.8)), 
-                          url("worker.png");
-                        background-repeat: no-repeat, no-repeat;  /* Prevent both images from repeating */
-                        background-size: contain, cover;  /* "contain" for logo, "cover" for gradient */
-                        background-position: center, center;
-                        height: 700px;  /* Ensures the body has a height */
+            body 
+            {
+                background-image: linear-gradient(rgba(0, 0, 90, 0.7), rgba(100, 206, 235, 0.8)), 
+                  url("worker.png");
+                background-repeat: no-repeat, no-repeat;  /* Prevent both images from repeating */
+                background-size: contain, cover;  /* "contain" for logo, "cover" for gradient */
+                background-position: center, center;
+                height: 700px;  /* Ensures the body has a height */
                
 
-                    }
-            
+              }
+              
+            #homefeatures
+            {
+                  background-color: rgba(0, 0, 0, 0.2); /* Transparent black background */
+                  width: 1180px;
+                  margin-left: 170px;
+                  margin-top: 70px;
+                  height: 460px;
+                  border-color: white;
+                  border-radius: 20px;  
+                  padding: 15px;
+                  display: flex; /* Enables flexbox */
+                  flex-direction: column; /* Ensures vertical stacking */
+                  align-items: center;
+              }
+
+              #homefeatures div { 
+                  display: flex; /* Makes the inner div (holding forms) a flex container */
+                  justify-content: space-around; /* Spaces them evenly */
+                  width: 100%; /* Ensures full width usage */
+              }
+
+              #loan, #DateWithus {
+                  height: 170px;
+                  width: 250px;
+                  background-color: rgba(1, 1, 1, 0.1);
+                  border-radius: 30px;
+                  padding: 40px;
+                  text-align: center; /* Centers text inside */
+                 
            
+                 
+               
+                  font-size: 20px;
+                  
+                  color:white;
+              }  
+              
+              #label
+              {
+                  color:white;
+                  font-size: 50px;
+                  font-weight: bold;
+                  margin-bottom: 90 px;
+              }
+              #sec
+              {
+                  height:60px;
+                  border-radius: 30px;
+                  width:200px;
+                  margin-left: 20px;
+                  font-size: 20px;
+                  background-color: #572bf3;
+                  color:white;
+              }
+              #btnLoans
+              {
+                  height:60px;
+                  border-radius: 30px;
+                  width:200px;
+                  margin-left: 20px;
+                  font-size: 20px;
+                  background-color: #572bf3;
+                  color:white;
+              }
         </style>
     </head>
+     <body>
     <header>
             
        
@@ -92,7 +157,41 @@
             <button id="loadBtn">get started</button>
         </div>
     </header>
-    <body>
+   
+        <div id="homefeatures">
+            <label id="label">KEY FEATURES</label>
+            <div >
+                <form id="DateWithus">
+                    <button id="btnLoans">Loans</button>
+                    <P id="contentLoan">
+                        Get the loan for free for about 7 years
+                        i am telling you, you have listen
+                    </P>
+                </form>
+                
+                <form id="loan">
+                    <button id="sec">secure success</button>
+                    <P id="contentSec">
+                        Get the loan for free for about 7 years
+                        i am telling you, you have listen
+                    </P>
+                </form>    
+               
+            </div>
+            
+            <p>
+            monaheng Phakoana auty
+         </p>
+        </div>
          
     </body>
+    <footer>
+         <div id="header">
+            <img src="standardBankLogo.png" alt="StandBankLogo" width=150 > <label id="bankLabel">Standard Bank</label>
+            <Label id="home">Home</Label>
+            <Label id="price">Pricing</Label>
+            <Label id="contact">Contact</Label>
+            <button id="loadBtn">get started</button>
+        </div>
+    </footer>
 </html>
