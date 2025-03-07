@@ -4,15 +4,93 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Loan Management system</title>
         <style>
+            #home
+            {
+               
+                color:white;
+                margin-left: 400px;
+                font-size: 32px;
+                
+            }
+            #loadBtn
+            {
+                background-color: blue;
+                height:60px;
+                border-radius: 20px;
+                width:190px;
+                font-size: 30px;
+                margin-left: 90px;
+                color:white;
+                filter: drop-shadow(skyblue 1rem 1rem 50px);
+                
+            }
+             #loadBtn:hover
+             {
+                 background-color: #fcb4f8;
+                 filter: drop-shadow(#fcb4f8 1rem 1rem 50px);
+             }
+            #price
+            {
+                color:white;
+                margin-left: 50px;
+                font-size: 32px;
+            }
+            #contact
+            {
+                color:white;
+                margin-left: 40px;
+                font-size: 32px;
+            }
+            #contact:hover
+            {
+                color:#fcb4f8;
+                font-size:30px;
+            }
+            #price:hover
+            {
+                color:#fcb4f8;
+                font-size:30px;
+            }
+            #home:hover
+            {
+                color:#fcb4f8;
+                font-size:30px;
+            }
+            #header
+            {
+                background-color: #172a9c;
+                padding-bottom: 20px;
+            }
+            #bankLabel
+            {
+                color:white;
+                font-size: 50px;
+            }
+           
+            body
+            {
+                background-image: url("standardBankLogo.png"), linear-gradient(blue, skyblue);
+                background-repeat: no-repeat, no-repeat;  /* Prevent both images from repeating */
+                background-size: contain, cover;
+                height : 700px;/* Adjusts size: "contain" for logo, "cover" for gradient */
+                background-position: center, center;*/
+            }
             
+           
         </style>
     </head>
     <header>
-        <div>
-            <img src="standardBankLogo.png" alt="StandBankLogo">
-        </div>
-        <div>
-            <button>Home</button>
+            
+       
+        <div id="header">
+            <img src="standardBankLogo.png" alt="StandBankLogo" width=150 > <label id="bankLabel">Standard Bank</label>
+            <Label id="home">Home</Label>
+            <Label id="price">Pricing</Label>
+            <Label id="contact">Contact</Label>
+            <button id="loadBtn">get started</button>
         </div>
     </header>
+    <body>
+         
+    </body>
 </html>
