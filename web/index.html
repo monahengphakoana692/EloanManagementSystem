@@ -8,7 +8,7 @@
             {
                
                 color:white;
-                margin-left: 400px;
+                margin-left: 300px;
                 font-size: 32px;
                 
             }
@@ -144,6 +144,36 @@
                   color:white;
               }
         </style>
+         <style>
+    #footer {
+        background-color: #172a9c;
+        color: white;
+        padding: 20px 0;
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    #footer-content {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    #footer-left, #footer-center, #footer-right {
+        flex: 1;
+        text-align: center;
+    }
+
+    #footer-right img {
+        margin: 5px;
+    }
+
+    #footer a {
+        text-decoration: none;
+    }
+</style>
     </head>
      <body>
     <header>
@@ -185,13 +215,26 @@
         </div>
          
     </body>
-    <footer>
-         <div id="header">
-            <img src="standardBankLogo.png" alt="StandBankLogo" width=150 > <label id="bankLabel">Standard Bank</label>
-            <Label id="home">Home</Label>
-            <Label id="price">Pricing</Label>
-            <Label id="contact">Contact</Label>
-            <button id="loadBtn">get started</button>
+   <footer>
+    <div id="footer">
+        <div id="footer-content">
+            <div id="footer-left">
+                <img src="standardBankLogo.png" alt="Standard Bank Logo" width="120">
+                <p>&copy; 2025 Standard Bank. All rights reserved.</p>
+            </div>
+            <div id="footer-center">
+                <h3>Contact Us</h3>
+                <p>Email: support@standardbank.com</p>
+                <p>Phone: +266 123 4567</p>
+            </div>
+            <div id="footer-right">
+                <h3>Follow Us</h3>
+                <a href="#"><img src="facebook-icon.png" alt="Facebook" width="30"></a>
+                <a href="#"><img src="twitter-icon.png" alt="Twitter" width="30"></a>
+                <a href="#"><img src="linkedin-icon.png" alt="LinkedIn" width="30"></a>
+            </div>
         </div>
-    </footer>
+    </div>
+</footer>
+   
 </html>
