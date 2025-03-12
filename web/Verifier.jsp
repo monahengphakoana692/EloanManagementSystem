@@ -9,9 +9,18 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Checking details</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+      <%
+      
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
+            
+            if(username.equals("Monaheng") && password.equals("Phakoana"))
+            {
+                out.println("hello there i am in ");
+            }
+      %>
     </body>
 </html>
