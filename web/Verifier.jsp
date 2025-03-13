@@ -9,7 +9,12 @@
         <title>Checking details</title>
     </head>
     <body>
+        <%!
+            String name = "";
+            String surname = "";
+        %>
         <%
+            
             
             {//preparing connection
                 
@@ -21,7 +26,12 @@
             Connection connect = DriverManager.getConnection(url,user,DBpassword);
             
             Statement statement = connect.createStatement();
-            statement.execute(sqlquery);
+            ResultSet res = statement.executeQuery(sqlquery);
+            while(res.next())
+            {
+                name = res.getString("name");
+                surname = res.getString("password");
+            }
             
             }
         %>
@@ -29,12 +39,42 @@
           
             String username = request.getParameter("username");
             String password = request.getParameter("password");
+            String authory = "";
             
-            
-            if(username.equals("Monaheng") && password.equals("Phakoana"))
+            if(username.equals(name) && password.equals(surname))
             {
-                out.println("hello there i am in ");
+                for(int i =0; i < username.length();i++)
+                {
+                    char chara = username.charAt((username.length()-1)-i);
+                    
+                    if(chara == 'd')
+                    {
+                      authory = authory + chara;
+                    }
+                    else if(chara == 't')
+                    {
+                        authory = authory + chara;
+                        
+                    }else if(chara == 's')
+                    {
+                        authory = authory + chara;
+                    }
+                }
+                
+                if(authory.equals("dts"))
+                {
+                    response.sendRedirect("worker.png");
+                }else
+                {
+                    response.sendRedirect("worker.png");
+                }
+                
+            }else
+            {
+               response.sendRedirect("Login.html");
             }
+            
+           
       %>
     </body>
 </html>
