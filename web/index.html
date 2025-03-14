@@ -321,6 +321,70 @@
         .select-btn:hover {
            background-color: #8cff8c; /* Darken color on hover */
         }
+/*nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn*/
+                        .faq-section {
+                 margin: 20px auto;
+                 max-width: 800px;
+                 font-family: Arial, sans-serif;
+                 border: 1px solid #ccc;
+             }
+
+             .faq-section h2 {
+                 text-align: center;
+                 font-size: 2rem;
+                 margin-bottom: 20px;
+                 color: white;
+             }
+
+             .faq-section ul {
+                 list-style-type: none;
+                 padding: 0;
+             }
+
+             .faq-section li {
+                 border-bottom: 1px solid #ddd;
+                 margin-bottom: 15px;
+                 padding: 10px;
+                 transition: background-color 0.3s;
+             }
+
+             .faq-section li:hover {
+                 background-color: #f7f7f7;
+             }
+
+             .faq-question {
+                 font-size: 1.2rem;
+                 font-weight: bold;
+                 color: #007BFF;
+                 cursor: pointer;
+                 display: inline-block;
+                 padding-right: 20px;
+                 transition: color 0.3s;
+             }
+
+             .faq-question:hover {
+                 color: #0056b3;
+             }
+
+             .plus-sign {
+                 font-size: 1.5rem;
+                 color: #007BFF;
+                 cursor: pointer;
+                 transition: transform 0.3s;
+             }
+
+             .plus-sign:hover {
+                 transform: rotate(45deg);
+             }
+
+             .faq-answer {
+                 display: none;
+                 font-size: 1rem;
+                 color: #555;
+                 margin-top: 10px;
+                 line-height: 1.5;
+                 padding-left: 20px;
+             }
 
 
 </style>
@@ -428,8 +492,59 @@
     </section>
 </div>
 
+<div class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <ul>
+        <li>
+            <strong class="faq-question">What is an eLoan management system?</strong><span class="plus-sign"> +</span>
+            <div class="faq-answer">An eLoan management system is a software solution designed to help lenders manage the entire lifecycle of a loan, from application to repayment.</div>
+        </li>
+        <li>
+            <strong class="faq-question">How does it benefit lenders?</strong><span class="plus-sign"> +</span>
+            <div class="faq-answer">It helps lenders track and manage loans efficiently, reducing manual errors and saving time, while providing insights to make informed decisions.</div>
+        </li>
+        <li>
+            <strong class="faq-question">Is it user-friendly for borrowers?</strong><span class="plus-sign"> +</span>
+            <div class="faq-answer">Yes, the system is designed to be simple and intuitive, making it easy for borrowers to apply, track their loan status, and make payments.</div>
+        </li>
+        <li>
+            <strong class="faq-question">What features does it include?</strong><span class="plus-sign"> +</span>
+            <div class="faq-answer">Features include loan tracking, automated payment reminders, loan application management, and detailed reports.</div>
+        </li>
+        <li>
+            <strong class="faq-question">Can it integrate with other systems?</strong><span class="plus-sign"> +</span>
+            <div class="faq-answer">Yes, the eLoan system can integrate with accounting, CRM, and other financial systems.</div>
+        </li>
+        <li>
+            <strong class="faq-question">Is customer support available?</strong><span class="plus-sign"> +</span>
+            <div class="faq-answer">Yes, dedicated customer support is available to assist with any technical or user-related issues.</div>
+        </li>
+    </ul>
+</div>
+         <script>
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    const plusSigns = document.querySelectorAll('.plus-sign');
 
-         
+    faqQuestions.forEach((question, index) => {
+        question.addEventListener('click', () => {
+            const answer = question.nextElementSibling.nextElementSibling;
+            const plusSign = plusSigns[index];
+
+            // Toggle the visibility of the answer
+            if (answer.style.display === 'none' || answer.style.display === '') {
+                answer.style.display = 'block';
+                plusSign.textContent = ' -'; // Change to minus sign
+            } else {
+                answer.style.display = 'none';
+                plusSign.textContent = ' +'; // Change back to plus sign
+            }
+        });
+
+        // Initially hide all answers
+        const answer = question.nextElementSibling.nextElementSibling;
+        answer.style.display = 'none';
+    });
+</script>
     </body>
    <footer>
     <div id="footer">
