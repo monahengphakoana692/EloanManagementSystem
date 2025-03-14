@@ -261,6 +261,67 @@
             {
                 background-color: #8cff8c;
             }
+            /*nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn*/
+           .plans-container
+           {
+            display: flex;
+            justify-content: space-around; /* This will space out the sections evenly */
+            gap: 20px; /* Space between each plan */
+            margin: 40px 0;
+            flex-wrap: wrap; /* Allow wrapping if the screen is smaller */
+        }
+
+        .plan {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 10px;
+            width: 250px; /* Adjust the width as needed */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            color: #333;
+        }
+
+        .plan h2 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        .plan .price {
+            font-size: 28px;
+            font-weight: bold;
+            color: #0284c7;
+        }
+
+        .plan ul {
+            
+            padding: 0;
+            list-style-type: disc; /* Add this line to turn the list into bullets */
+            padding-left: 20px; /* Add padding to space the bullets from the text */
+            list-style-position: inside;
+        }
+
+        .plan ul li {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .select-btn {
+            background-color: #0284c7;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px; /* Add space between list and button */
+        }
+
+        .select-btn:hover {
+            background-color: #026a99; /* Darken color on hover */
+        }
+
+
 </style>
     </head>
      <body>
@@ -327,7 +388,46 @@
                 <div class="form-price">$49</div>
                 <button class="buy-now-button">Buy Now</button>
             </form>
-        </div>   
+        </div> 
+ <div class="plans-container">
+    <section class="plan">
+        <h2>Enterprise</h2>
+        <p class="price">$299</p>
+        <ul>
+            <li>Unlimited Users</li>
+            <li>Dedicated Support</li>
+            <li>Advanced Security</li>
+            <li>Tailored Solutions</li>
+        </ul>
+        <button class="select-btn">Select</button>
+    </section>
+
+    <section class="plan">
+        <h2>Basic</h2>
+        <p class="price">$99</p>
+        <ul>
+            <li>Easy Setup</li>
+            <li>Email Support</li>
+            <li>Mobile Friendly</li>
+            <li>No Contracts</li>
+        </ul>
+        <button class="select-btn">Select</button>
+    </section>
+
+    <section class="plan">
+        <h2>Pro</h2>
+        <p class="price">$199</p>
+        <ul>
+            <li>All Features</li>
+            <li>Priority Support</li>
+            <li>Custom Branding</li>
+            <li>Analytics Tools</li>
+        </ul>
+        <button class="select-btn">Select</button>
+    </section>
+</div>
+
+
          
     </body>
    <footer>
