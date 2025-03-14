@@ -4,6 +4,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Loan Management system</title>
         <style>
+          
             #home
             {
                
@@ -75,6 +76,7 @@
                 background-size: contain, cover;  /* "contain" for logo, "cover" for gradient */
                 background-position: center, center;
                 height: 1100px;  /* Ensures the body has a height */
+                background-color:#020d52;
                
 
               }
@@ -174,7 +176,8 @@
         text-decoration: none;
     }
     
-     #joinNowBtn {
+     #joinNowBtn
+     {
             background-color: blue;
             height: 60px;
             border-radius: 20px;
@@ -184,7 +187,7 @@
             filter: drop-shadow(green 1rem 1rem 50px);
             display: block;
             margin: 30px auto;
-        }
+      }
 
         #joinNowBtn:hover {
             background-color: #8cff8c;
@@ -212,6 +215,50 @@
             line-height: 1.6;
             margin-bottom: 30px;
         }
+        
+          .form-container 
+          {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 10px;
+                background-color:#020d52;
+            }
+            #form1 {
+                margin-right:190px;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                background-color: #f9f9f9;
+                margin-left:230px;
+            }
+            
+            .form-title {
+                font-size: 24px;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+            .form-description {
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            .form-price {
+                font-size: 20px;
+                color: green;
+                margin-bottom: 20px;
+            }
+            .buy-now-button {
+                padding: 10px;
+                background-color: #572bf3;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                width: 100%;
+            }
+            .buy-now-button:hover 
+            {
+                background-color: #8cff8c;
+            }
 </style>
     </head>
      <body>
@@ -259,6 +306,26 @@
         </p>
         <button id="joinNowBtn" onclick="document.location='JoinNow.html'">Join Now</button>
     </div>
+   <div class="form-container">
+            <form id="form1">
+               <div class="form-title">Lendify</div>
+                <div class="form-description">All-in-one loan management system for savvy lenders.</div>
+                <div class="form-price">$99</div>
+                <button class="buy-now-button">Buy Now</button>
+            </form>
+            <form id="form1">
+                  <div class="form-title">Trackify</div>
+                <div class="form-description">Keep tabs on your loans like a hawk.</div>
+                <div class="form-price">$79</div>
+                <button class="buy-now-button">Buy Now</button>
+            </form>
+            <form id="form1">
+                 <div class="form-title">Reportify</div>
+                <div class="form-description">Generate reports that even your accountant will love.</div>
+                <div class="form-price">$49</div>
+                <button class="buy-now-button">Buy Now</button>
+            </form>
+        </div>   
          
     </body>
    <footer>
