@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page pageEncoding="UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="com" %>
 <%@ page import="java.sql.*" %>
 <%@ page import="javax.sql.DataSource" %>
 <!DOCTYPE html>
@@ -67,7 +67,7 @@
             </tr>
         </thead>
         <tbody>
-            <c:forEach var="loan" items="${loanTypes}">
+            <com:forEach var="loan" items="${loanTypes}">
                 <tr>
                     <td>monaheng<td>
                     <td>
@@ -75,7 +75,7 @@
                         <a href="deleteLoan.jsp?id=${loan.id}" class="btn btn-danger btn-sm">Delete</a>
                     </td>
                 </tr>
-            </c:forEach>
+            </com:forEach>
         </tbody>
     </table>
 </div>
