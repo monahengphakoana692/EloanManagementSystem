@@ -454,43 +454,56 @@
             }
             
            /* *************************************************************************************************/
-            #loanForm {
-            margin-top: 20px;
-            margin-left:500px;
-            padding: 20px;
-            border: 1px solid #ccc;
+           .loan-form {
+            background-color: #fff;
             border-radius: 8px;
-            background-color: #f9f9f9;
-            max-width: 500px;
-            height:500px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
         }
-        
-        .form-group label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
+
+        .loan-form h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .loan-form .percentage {
+            font-size: 18px;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        .loan-form .details {
+            margin-bottom: 20px;
+        }
+
+        .loan-form .details p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .loan-form .details p strong {
             color: #333;
         }
-        
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
+
+        .loan-form .apply-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
             border-radius: 4px;
-            box-sizing: border-box;
-            font-size: 14px;
-            margin-top:50px; 
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
         }
-        
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            border-color: #66afe9;
-            outline: none;
-            box-shadow: 0 0 5px rgba(102, 175, 233, 0.5);
+
+        .loan-form .apply-button:hover {
+            background-color: #0056b3;
         }
+
            
         #chooseLoan
         {
@@ -611,33 +624,26 @@
     </section>
 </div>
 <div>
-    <<h1 id="chooseLoan">Choose your loan</h1><br><br>
+    <h1 id="chooseLoan">Choose your loan</h1><br><br>
     <button id="carLoan">Car loan </button>
     <button id="PLoan">personal loan</button>
     <button id="Bloan">Business loan </button><br><br>
     
-     <form id="loanForm">
-            <div id="formFields">
-                <!-- Dynamic fields will be inserted here -->
-                <div class="form-group">
-                    <label for="loan_amount">Loan Amount:</label>
-                    <input type="text" id="loan_amount" name="loan_amount" value="20000" readonly>
-                </div>
-                <div class="form-group">
-                    <label for="interest_rate">Interest Rate:</label>
-                    <input type="text" id="interest_rate" name="interest_rate" value="5.5%" readonly>
-                </div>
-                <div class="form-group">
-                    <label for="loan_term">Loan Term:</label>
-                    <input type="text" id="loan_term" name="loan_term" value="60 months" readonly>
-                </div>
-                <div class="form-group">
-                    <label for="monthly_payment">Monthly Payment:</label>
-                    <input type="text" id="monthly_payment" name="monthly_payment" value="$377.42" readonly>
-                </div>
-            </div>
-        </form>
-</div>
+    <div class="loan-form">
+        <h2>Car Loan</h2>
+        <div class="percentage">52%</div>
+
+        <div class="details">
+            <p><strong>Interest Rate</strong></p>
+            <p>- Take Minimum: $1,000,000.00</p>
+            <p>- Take Maximum: $1,000,000,000.00</p>
+            <p>- Per Installment: 38%</p>
+            <p>- Installment Interval: 365 Days</p>
+            <p>- Total Installment: 4</p>
+        </div>
+
+        <button class="apply-button">Apply Now</button>
+    </div>
 <div class="faq-section">
     <h2>Frequently Asked Questions</h2>
     <ul>
