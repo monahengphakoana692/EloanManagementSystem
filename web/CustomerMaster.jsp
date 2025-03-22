@@ -209,45 +209,7 @@
                 if (pageNames != null)
                 {
                     
-                    switch (pageNames)
-                    {
-                        case "dashboard":
-                            %><jsp:include page="dashboard.jsp" /><%
-                            break;
-                        case "takeLoan":
-                            %><jsp:include page="takeLoan.jsp" /><%
-                            break;
-                        case "myLoans":
-                            %><jsp:include page="myLoans.jsp" /><%
-                            break;
-                        case "deposit":
-                            %><jsp:include page="DepositMethod.jsp" /><%
-                            break;
-                        case "withdraw":
-                            %><jsp:include page="withdraw.jsp" /><%
-                            break;
-                        case "transactions":
-                            %><jsp:include page="transactions.jsp" /><%
-                            break;
-                        case "supportTicket":
-                            %><jsp:include page="Tickets.jsp" /><%
-                            break;
-                        case "2faSetting":
-                            %><jsp:include page="2faSetting.jsp" /><%
-                            break;
-                        case "profile":
-                            %><jsp:include page="profile.jsp" /><%
-                            break;
-                        case "changePassword":
-                            %><jsp:include page="changePassword.jsp" /><%
-                            break;
-                        case "logout":
-                            %><jsp:include page="logout.jsp" /><%
-                            break;
-                        default:
-                            %><p>Please select a page from the menu.</p><%
-                            break;
-                    }
+                    
                 } else
                 {
                     %><p>Welcome! Please select a page from the menu.</p><%
