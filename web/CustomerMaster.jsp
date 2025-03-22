@@ -135,6 +135,11 @@
             color: black;
             margin-left: -40px;
         }
+        #dep a
+        {
+            text-decoration: none;
+            color: black;
+        }
 
         #with {
             background-color: black;
@@ -257,13 +262,13 @@
         <div class="menu">
             <h1>Standard Bank Loan</h1>
             <h2>Balance : $0</h2><br>
-            <button id="dep">Deposit</button>
-            <button id="with">Withdraw</button>
+            <button id="dep" ><a href="#" onclick="callJSPMethods('DepositMethod')">Deposit</a></button>
+            <button id="with" >Withdraw</button>
             <br><br><br>
            <ul>
               
                 <li><a href="#" onclick="callJSPMethods('AnotherPage')">Dashboard</a></li>
-                <li><a href="#" onclick="callJSPMethods('AnotherPage')">Take Loan</a></li>
+                <li><a href="#" onclick="callJSPMethods('TakeLoans')">Take Loan</a></li>
                 <li><a href="#" onclick="callJSPMethods('MyLoans')">My Loans</a></li>
                 <li><a href="#" onclick="callJSPMethods('DepositMethod')">Deposit</a></li>
                 <li><a href="#" onclick="callJSPMethods('Withdraw')">Withdraw</a></li>

@@ -91,7 +91,7 @@
 </head>
 <body id="body1">
     <div class="container2">
-        <h1>Deposit Methods</h1>
+        <h1>Deposit Methods</h1 >
 
         <div class="instructions">
             <p>Add funds using our system’s gateway. The deposited amount will be credited to the deposit wallet. You'll just make investments from this wallet.</p>
