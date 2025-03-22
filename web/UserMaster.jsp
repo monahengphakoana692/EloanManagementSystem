@@ -55,9 +55,9 @@
 
         .menu {
             margin-top: -980px;
-            width: 260px;
+            width: 160px;
             background-color: white;
-            height: 990px;
+            height: 880px;
             padding: 50px;
             text-autospace: auto;
         }
@@ -118,8 +118,8 @@
         {
             overflow: auto;
             padding:200px;
-            height:800px;
-            width: 1080px;
+            height:400px;
+            width: 680px;
             margin-left:20px;
             background-color:#effbfd;
             align-content:center;

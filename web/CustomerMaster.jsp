@@ -81,9 +81,9 @@
 
         .menu90 {
             margin-top: -980px;
-            width: 290px;
+            width: 190px;
             background-color: white;
-            height: 980px;
+            height: 880px;
             padding: 50px;
             text-autospace: auto;
         }
@@ -173,8 +173,8 @@
         {
             overflow: auto;
             padding:200px;
-            height:800px;
-            width: 1080px;
+            height:400px;
+            width:680px;
             margin-left:20px;
             background-color:#effbfd;
             align-content:center;
@@ -290,7 +290,7 @@
     xhr.open("GET", pageName+".jsp?page=" + pageName, true);
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            document.getElementById("placeholderMasters").innerHTML = xhr.responseText;
+            document.getElementById("placeholderMasters90").innerHTML = xhr.responseText;
         }
     };
     xhr.send();
