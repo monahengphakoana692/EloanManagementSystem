@@ -246,7 +246,7 @@
         </div>
 
         <!-- Registration Form -->
-        <form id="registrationForm">
+        <form action="CustomerMaster.jsp" id="registrationForm">
             <div class="form-group">
                 <label for="phone">Phone Number</label>
                 <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
@@ -280,7 +280,8 @@
 
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                <input type="password" id="password" name="password" minlength="8" placeholder="Enter your password" required>
+                
             </div>
 
             <div class="policy-links">
@@ -289,7 +290,7 @@
                 <a href="#">Rapid Policy</a>
             </div>
 
-            <button type="submit" class="register-button">Register</button>
+            <button type="submit" class="register-button" >Register</button>
         </form>
         </div>
     </div>
