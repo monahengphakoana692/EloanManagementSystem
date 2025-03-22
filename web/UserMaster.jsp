@@ -206,7 +206,7 @@
         <div class="menu">
             <h1>Standard Bank Loan</h1>
           <ul>
-                <li><a href="#" onclick="callJSPMethods('dashboard')">Dashboard</a></li>
+                <li><a href="#" onclick="callJSPMethods('dashboardAd')">Dashboard</a></li>
                 <li><a href="#" onclick="callJSPMethods('manageUsers')">Manage Users</a></li>
                 <li><a href="#" onclick="callJSPMethods('categories')">Categories</a></li>
                 <li><a href="#" onclick="callJSPMethods('loanPlans')">Loan Plans</a></li>
