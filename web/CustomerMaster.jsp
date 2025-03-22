@@ -7,7 +7,7 @@
     <title>Standard Bank Loan Ltd - Deposit Confirm</title>
     <style>
         /* General styling */
-        body {
+        #body90 {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin: 0;
@@ -15,7 +15,7 @@
             color: #333;
         }
 
-        .container {
+        .container90 {
             max-width: 2000px;
             margin: 0 auto;
             background-color: #f4f4f4;
@@ -24,48 +24,48 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        h1 {
+        #h190 {
             text-align: center;
             color: #007bff;
             margin-bottom: 20px;
         }
 
-        h2 {
+        #h290 {
             color: #007bff;
             margin-bottom: 10px;
         }
 
-        .balance {
+        .balance90 {
             text-align: center;
             font-size: 18px;
             margin-bottom: 20px;
         }
 
-        .instructions {
+        .instructions90 {
             margin-bottom: 20px;
         }
 
-        .instructions p {
+        .instructions90 p {
             margin: 10px 0;
         }
 
-        .bank-details {
+        .bank-details90 {
             background-color: #f9f9f9;
             padding: 15px;
             border-radius: 8px;
             margin-bottom: 20px;
         }
 
-        .bank-details p {
+        .bank-details90 p {
             margin: 5px 0;
         }
 
-        .pay-now {
+        .pay-now90 {
             text-align: center;
             margin-bottom: 20px;
         }
 
-        .pay-now button {
+        .pay-now90 button {
             background-color: #007bff;
             color: #fff;
             border: none;
@@ -75,52 +75,52 @@
             cursor: pointer;
         }
 
-        .pay-now button:hover {
+        .pay-now90 button:hover {
             background-color: #0056b3;
         }
 
-        .menu {
+        .menu90 {
             margin-top: -980px;
-            width: 160px;
+            width: 290px;
             background-color: white;
-            height: 910px;
+            height: 980px;
             padding: 50px;
             text-autospace: auto;
         }
 
-        .menu ul {
+        .menu90 ul {
             list-style-type: none;
             padding: 0;
         }
 
-        .menu ul li {
+        .menu90 ul li {
             margin: 10px 0;
             margin-bottom: 35px;
         }
 
-        .menu ul li a {
+        .menu90 ul li a {
             text-decoration: none;
             color: #007bff;
         }
 
-        .menu ul li a:hover {
+        .menu90 ul li a:hover {
             text-decoration: none;
             color: black;
         }
 
-        h1 {
+        #h190 {
             margin-left: -40px;
             font-size: 20px;
         }
 
-        #lang {
+        #lang90 {
             background-color: white;
             width: 1180px;
             height: 60px;
             margin-left: 260px;
         }
 
-        #Language {
+        #Language90 {
             margin-left: 1100px;
             width: 80px;
             height: 40px;
@@ -160,7 +160,7 @@
             cursor: pointer;
         }
 
-        #placeholderMasters {
+        #placeholderMasters90 {
             width: 1120px;
             height: 900px;
             background-color: white;
@@ -169,22 +169,22 @@
             overflow: auto; /* Add scroll if content overflows */
             align-content: center;
         }
-        #formHolder
+        #formHolder90
         {
             overflow: auto;
             padding:200px;
-            height:400px;
-            width: 680px;
+            height:800px;
+            width: 1080px;
             margin-left:20px;
             background-color:#effbfd;
-            align-content:start;
+            align-content:center;
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <div id="lang">
-            <select id="Language" name="langs" required>
+<body id="body90">
+    <div class="container90">
+        <div id="lang90">
+            <select id="Language90" name="langs" required>
                 <option value="English">English</option>
                 <option value="Sesotho">Sesotho</option>
                 <!-- Add more languages as needed -->
@@ -201,8 +201,8 @@
         %>
 
         <!-- Placeholder for including another page -->
-        <div id="placeholderMasters">
-            <form id="formHolder">
+        <div id="placeholderMasters90">
+            <form id="formHolder90">
                 <div>
                 <% 
                
@@ -259,9 +259,9 @@
         </div>
 
         <!-- Menu Section -->
-        <div class="menu">
-            <h1>Standard Bank Loan</h1>
-            <h2>Balance : $0</h2><br>
+        <div class="menu90">
+            <h1 id="h190">Standard Bank Loan</h1>
+            <h2 id="h290">Balance : $0</h2><br>
             <button id="dep" ><a href="#" onclick="callJSPMethods('DepositMethod')">Deposit</a></button>
             <button id="with" >Withdraw</button>
             <br><br><br>
@@ -276,7 +276,7 @@
                 <li><a href="#" onclick="callJSPMethods('Tickets')">Support Ticket</a></li>
                 <li><a href="#" onclick="callJSPMethods('2FASetting')">2FA Setting</a></li>
                 <li><a href="#" onclick="callJSPMethods('Profile')">Profile</a></li>
-                <li><a href="#" onclick="callJSPMethods('ChangePassoword')">Change Password</a></li><br><br><br><br><br><br><br><!-- comment -->
+                <li><a href="#" onclick="callJSPMethods('ChangePassoword')">Change Password</a></li><br><!-- comment -->
                 <br><br>
                 <li><a href="#" onclick="callJSPMethods('Logout')">Logout</a></li>
 

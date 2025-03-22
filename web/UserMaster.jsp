@@ -130,8 +130,7 @@
     <div class="container">
         <div id="lang">
             <select id="Language" name="langs" required>
-                <option value="English">English</option>
-                <option value="Sesotho">Sesotho</option>
+                <option value="English">Admin</option>
                 <!-- Add more languages as needed -->
             </select>
         </div>
