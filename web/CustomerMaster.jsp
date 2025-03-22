@@ -185,11 +185,70 @@
                 <!-- Add more languages as needed -->
             </select>
         </div>
+        <%!
+            String pageNames;
+            public String callJSPMethod(String pageName)
+                {
+                    this.pageNames = pageName;
+                    
+                    return (String)pageName;
+                }
+        %>
 
         <!-- Placeholder for including another page -->
         <div id="placeholderMasters">
             <form id="formHolder">
-                <jsp:include page="AnotherPage.jsp"/>
+                <div>
+                <% 
+               
+                if (pageNames != null)
+                {
+                    
+                    switch (pageNames)
+                    {
+                        case "dashboard":
+                            %><jsp:include page="AnotherPage.jsp" /><%
+                            break;
+                        case "takeLoan":
+                            %><jsp:include page="takeLoan.jsp" /><%
+                            break;
+                        case "myLoans":
+                            %><jsp:include page="myLoans.jsp" /><%
+                            break;
+                        case "deposit":
+                            %><jsp:include page="DepositMethod.jsp" /><%
+                            break;
+                        case "withdraw":
+                            %><jsp:include page="withdraw.jsp" /><%
+                            break;
+                        case "transactions":
+                            %><jsp:include page="transactions.jsp" /><%
+                            break;
+                        case "supportTicket":
+                            %><jsp:include page="supportTicket.jsp" /><%
+                            break;
+                        case "2faSetting":
+                            %><jsp:include page="2faSetting.jsp" /><%
+                            break;
+                        case "profile":
+                            %><jsp:include page="profile.jsp" /><%
+                            break;
+                        case "changePassword":
+                            %><jsp:include page="changePassword.jsp" /><%
+                            break;
+                        case "logout":
+                            %><jsp:include page="logout.jsp" /><%
+                            break;
+                        default:
+                            %><p>Please select a page from the menu.</p><%
+                            break;
+                    }
+                } else
+                {
+                    %><p>Welcome! Please select a page from the menu.</p><%
+                }
+            %>
+                </div>
             </form>
             
         </div>
@@ -201,20 +260,35 @@
             <button id="dep">Deposit</button>
             <button id="with">Withdraw</button>
             <br><br><br>
-            <ul>
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Take Loan</a></li>
-                <li><a href="#">My Loans</a></li>
-                <li><a href="#">Deposit</a></li>
-                <li><a href="#">Withdraw</a></li>
-                <li><a href="#">Transactions</a></li>
-                <li><a href="#">Support Ticket</a></li>
-                <li><a href="#">2FA Setting</a></li>
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Change Password</a></li><br><br><br><br><br><br><br><br>
-                <li><a href="#">Logout</a></li>
+           <ul>
+              
+                <li><a href="#" onclick="callJSPMethods('AnotherPage')">Dashboard</a></li>
+                <li><a href="#" onclick="callJSPMethods('AnotherPage')">Take Loan</a></li>
+                <li><a href="#" onclick="callJSPMethods('MyLoans')">My Loans</a></li>
+                <li><a href="#" onclick="callJSPMethods('DepositMethod')">Deposit</a></li>
+                <li><a href="#" onclick="callJSPMethods('Withdraw')">Withdraw</a></li>
+                <li><a href="#" onclick="callJSPMethods('Transactions')">Transactions</a></li>
+                <li><a href="#" onclick="callJSPMethods('Support Ticket')">Support Ticket</a></li>
+                <li><a href="#" onclick="callJSPMethods('2FASetting')">2FA Setting</a></li>
+                <li><a href="#" onclick="callJSPMethods('Profile')">Profile</a></li>
+                <li><a href="#" onclick="callJSPMethods('ChangePassoword')">Change Password</a></li>
+                <li><a href="#" onclick="callJSPMethods('Logout')">Logout</a></li>
+
             </ul>
         </div>
     </div>
+            
+    <script>
+   function callJSPMethods(pageName) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", pageName+".jsp?page=" + pageName, true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            document.getElementById("placeholderMasters").innerHTML = xhr.responseText;
+        }
+    };
+    xhr.send();
+}
+    </script>
 </body>
 </html>
