@@ -57,7 +57,7 @@
             margin-top: -980px;
             width: 260px;
             background-color: white;
-            height: 940px;
+            height: 990px;
             padding: 50px;
             text-autospace: auto;
         }
@@ -118,11 +118,11 @@
         {
             overflow: auto;
             padding:200px;
-            height:400px;
-            width: 680px;
+            height:800px;
+            width: 1080px;
             margin-left:20px;
             background-color:#effbfd;
-            align-content:start;
+            align-content:center;
         }
     </style>
 </head>
