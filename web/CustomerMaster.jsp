@@ -212,7 +212,7 @@
                     switch (pageNames)
                     {
                         case "dashboard":
-                            %><jsp:include page="AnotherPage.jsp" /><%
+                            %><jsp:include page="dashboard.jsp" /><%
                             break;
                         case "takeLoan":
                             %><jsp:include page="takeLoan.jsp" /><%
@@ -267,16 +267,17 @@
             <br><br><br>
            <ul>
               
-                <li><a href="#" onclick="callJSPMethods('AnotherPage')">Dashboard</a></li>
+                <li><a href="#" onclick="callJSPMethods('dashboard')">Dashboard</a></li>
                 <li><a href="#" onclick="callJSPMethods('TakeLoans')">Take Loan</a></li>
-                <li><a href="#" onclick="callJSPMethods('MyLoans')">My Loans</a></li>
+                <li><a href="#" onclick="callJSPMethods('Myloans')">My Loans</a></li>
                 <li><a href="#" onclick="callJSPMethods('DepositMethod')">Deposit</a></li>
                 <li><a href="#" onclick="callJSPMethods('Withdraw')">Withdraw</a></li>
                 <li><a href="#" onclick="callJSPMethods('Transactions')">Transactions</a></li>
                 <li><a href="#" onclick="callJSPMethods('Support Ticket')">Support Ticket</a></li>
                 <li><a href="#" onclick="callJSPMethods('2FASetting')">2FA Setting</a></li>
                 <li><a href="#" onclick="callJSPMethods('Profile')">Profile</a></li>
-                <li><a href="#" onclick="callJSPMethods('ChangePassoword')">Change Password</a></li>
+                <li><a href="#" onclick="callJSPMethods('ChangePassoword')">Change Password</a></li><br><br><br><br><br><br><br><!-- comment -->
+                <br><br>
                 <li><a href="#" onclick="callJSPMethods('Logout')">Logout</a></li>
 
             </ul>
