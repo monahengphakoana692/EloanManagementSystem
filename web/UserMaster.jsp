@@ -70,7 +70,6 @@
         .menu ul li {
             margin: 10px 0;
             margin-bottom: 27px;
-            
         }
 
         .menu ul li a {
@@ -114,15 +113,42 @@
             overflow: auto; /* Add scroll if content overflows */
             align-content: center;
         }
-        #formHolder
-        {
+
+        #formHolder {
             overflow: auto;
-            padding:200px;
-            height:400px;
+            padding: 200px;
+            height: 400px;
             width: 680px;
-            margin-left:20px;
-            background-color:#effbfd;
-            align-content:center;
+            margin-left: 20px;
+            background-color: #effbfd;
+            align-content: center;
+        }
+
+        /* Styling for the loans dropdown */
+        .menu ul li select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #007bff;
+            border-radius: 4px;
+            background-color: white;
+            color: #007bff;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .menu ul li select:hover {
+            border-color: #0056b3;
+        }
+
+        .menu ul li select option {
+            padding: 8px;
+            background-color: white;
+            color: #333;
+        }
+
+        .menu ul li select option:hover {
+            background-color: #007bff;
+            color: white;
         }
     </style>
 </head>
@@ -149,10 +175,8 @@
             <form id="formHolder">
                 <div>
                 <% 
-               
                 if (pageNames != null)
                 {
-                    
                     switch (pageNames)
                     {
                         case "dashboard":
@@ -199,18 +223,27 @@
             %>
                 </div>
             </form>
-            
         </div>
 
         <!-- Menu Section -->
         <div class="menu">
             <h1>Standard Bank Loan</h1>
-          <ul>
+            <ul>
                 <li><a href="#" onclick="callJSPMethods('dashboardAd')">Dashboard</a></li>
                 <li><a href="#" onclick="callJSPMethods('manageUsers')">Manage Users</a></li>
                 <li><a href="#" onclick="callJSPMethods('categories')">Categories</a></li>
                 <li><a href="#" onclick="callJSPMethods('loanPlans')">Loan Plans</a></li>
-                <li><a href="#" onclick="callJSPMethods('loans')">Loans</a></li>
+                <li>
+                    <select onchange="callJSPMethods(this.value)">
+                        <option value="">Loans</option>
+                        <option value="pendingLoan">Pending Loans</option>
+                        <option value="runningLoans">Running Loans</option>
+                        <option value="allLoans">All Loans</option>
+                        <option value="dueLoans">Due Loans</option>
+                        <option value="paidLoans">Paid Loans</option>
+                        <option value="rejectedLoans">Rejected Loans</option>
+                    </select>
+                </li>
                 <li><a href="#" onclick="callJSPMethods('paymentGateways')">Payment Gateways</a></li>
                 <li><a href="#" onclick="callJSPMethods('deposits')">Deposits</a></li>
                 <li><a href="#" onclick="callJSPMethods('withdrawals')">Withdrawals</a></li>
@@ -222,23 +255,22 @@
                 <li><a href="#" onclick="callJSPMethods('systemConfiguration')">System Configuration</a></li>
                 <li><a href="#" onclick="callJSPMethods('logoAndFavicon')">Logo & Favicon</a></li>
                 <li><a href="#" onclick="callJSPMethods('socialCredentials')">Social Credentials</a></li>
-                
                 <li><a href="#" onclick="callJSPMethods('logout')">Logout</a></li>
             </ul>
         </div>
     </div>
-            
+
     <script>
-   function callJSPMethods(pageName) {
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", pageName+".jsp?page=" + pageName, true);
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            document.getElementById("placeholderMasters").innerHTML = xhr.responseText;
+        function callJSPMethods(pageName) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", pageName + ".jsp?page=" + pageName, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    document.getElementById("placeholderMasters").innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send();
         }
-    };
-    xhr.send();
-}
     </script>
 </body>
 </html>
