@@ -230,7 +230,7 @@
                             %><jsp:include page="transactions.jsp" /><%
                             break;
                         case "supportTicket":
-                            %><jsp:include page="supportTicket.jsp" /><%
+                            %><jsp:include page="Tickets.jsp" /><%
                             break;
                         case "2faSetting":
                             %><jsp:include page="2faSetting.jsp" /><%
@@ -273,7 +273,7 @@
                 <li><a href="#" onclick="callJSPMethods('DepositMethod')">Deposit</a></li>
                 <li><a href="#" onclick="callJSPMethods('Withdraw')">Withdraw</a></li>
                 <li><a href="#" onclick="callJSPMethods('Transactions')">Transactions</a></li>
-                <li><a href="#" onclick="callJSPMethods('Support Ticket')">Support Ticket</a></li>
+                <li><a href="#" onclick="callJSPMethods('Tickets')">Support Ticket</a></li>
                 <li><a href="#" onclick="callJSPMethods('2FASetting')">2FA Setting</a></li>
                 <li><a href="#" onclick="callJSPMethods('Profile')">Profile</a></li>
                 <li><a href="#" onclick="callJSPMethods('ChangePassoword')">Change Password</a></li><br><br><br><br><br><br><br><!-- comment -->
