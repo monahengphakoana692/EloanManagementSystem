@@ -198,7 +198,7 @@
                 <li>
                     <select onchange="callJSPMethods(this.value)">
                         <option value="">Loans</option>
-                        <option value="pendingLoan">Pending Loans</option>
+                        <option value="pendingloans">Pending Loans</option>
                         <option value="runningLoans">Running Loans</option>
                         <option value="allLoans">All Loans</option>
                         <option value="dueLoans">Due Loans</option>
@@ -222,17 +222,6 @@
         </div>
     </div>
 
-    <script>
-        function callJSPMethods(pageName) {
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", pageName + ".jsp?page=" + pageName, true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    document.getElementById("placeholderMasters").innerHTML = xhr.responseText;
-                }
-            };
-            xhr.send();
-        }
-    </script>
+                <script src="script.js"></script>
 </body>
 </html>

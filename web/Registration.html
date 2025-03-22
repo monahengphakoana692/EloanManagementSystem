@@ -124,7 +124,7 @@
             width: 100%;
             padding: 20px;
             text-align: center;
-            margin-top: -680px;
+            margin-top: -885px;
             margin-left:790px;
             
         }
@@ -236,14 +236,13 @@
     </header>
    
      <div>
-        <img src="regPic.jpg" alt="Standard Bank Logo" width="650" height="670" id="imageReg">
+        <img src="regPic.jpg" alt="Standard Bank Logo" width="650" height="880" id="imageReg">
     </div>
     <div class="registration-container">
         <div>
          <img src="standardBankLogo.png" alt="Standard Bank Logo" width="120">
         <h1>Welcome To Standard bank loan</h1>
-        <div class="contact-info">
-        </div>
+       
 
         <!-- Registration Form -->
         <form action="CustomerMaster.jsp" id="registrationForm">
@@ -253,31 +252,59 @@
             </div>
 
             <div class="form-group">
-                <label for="country">Country</label>
+                <label for="country">Districts</label>
                 <select id="country" name="country" required>
-                    <option value="">Select Country</option>
-                    <option value="Ghana">Ghana</option>
-                    <option value="Nigeria">Nigeria</option>
-                    <option value="USA">USA</option>
+                    <option value="">Select District</option>
+                    <option value="QAcha">Qacha</option>
+                    <option value="Maseru">Maseru</option>
+                    <option value="Berea">Berea</option>
+                    <option value="Leribe">Leribe</option>
+                    <option value="Thaba-Tseka">Thaba-Tseka</option>
+                    <option value="Mokhotlong">Mokhotlong</option>
+                    <option value="Mafeteng">Mafeteng</option>
+                    <option value="Quthing">Quthing</option>
+                    <option value="Mokhotlong">Mohale soek</option>
                     <!-- Add more countries as needed -->
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="city">City</label>
-                <input type="text" id="city" name="city" placeholder="Enter your city" required>
+                <label for="city">Street</label>
+                <input type="text" id="city" name="city" placeholder="Enter your Street" required>
             </div>
 
             <div class="form-group">
-                <label for="street">Street</label>
-                <input type="text" id="street" name="street" placeholder="Enter your street" required>
+                <label for="Date">DOB</label>
+                <input type="date" id="Date" name="Date"  required>
             </div>
 
+            <div class="form-group">
+                <label for="AccNum">Account number</label>
+                <input type="number" id="AccNum" name="AccNum" placeholder="Enter your Acc number" required>
+                
+            </div>
+            <div class="form-group">
+                <label for="acctype">ACCOUNT Type</label>
+                 <select id="acctype" name="acctype" required>
+                    <option value="">Select Acc type</option>
+                    <option value="CurrentAcc">Current Acc</option>
+                    <option value="CAcc">Credit Acc</option>
+                    <option value="LAcc"> Loan acc</option>
+    
+                    <!-- Add more countries as needed -->
+                </select>
+                
+            </div>
+            <div class="form-group">
+                <label for="ID">National Identity</label>
+                <input type="number" id="ID" name="ID" placeholder="Enter your ID num" required>
+                
+            </div>
+            
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" placeholder="Enter your username" required>
             </div>
-
             <div class="form-group">
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" minlength="8" placeholder="Enter your password" required>
