@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Standard bank loan Ltd - Deposit Confirm</title>
+    <title>Standard Bank Loan Ltd - Deposit Confirm</title>
     <style>
         /* General styling */
         body {
@@ -15,8 +15,7 @@
             color: #333;
         }
 
-        .container
-        {
+        .container {
             max-width: 2000px;
             margin: 0 auto;
             background-color: #f4f4f4;
@@ -80,27 +79,23 @@
             background-color: #0056b3;
         }
 
-        .menu 
-        {
+        .menu {
             margin-top: -980px;
-            width:160px;
-            background-color:white;
-            height:910px;
-            padding:50px;
-            text-autospace:auto;
+            width: 160px;
+            background-color: white;
+            height: 910px;
+            padding: 50px;
+            text-autospace: auto;
         }
 
-        .menu ul 
-        {
+        .menu ul {
             list-style-type: none;
             padding: 0;
-            
         }
 
-        .menu ul li
-        {
+        .menu ul li {
             margin: 10px 0;
-            margin-bottom:35px;
+            margin-bottom: 35px;
         }
 
         .menu ul li a {
@@ -108,70 +103,76 @@
             color: #007bff;
         }
 
-        .menu ul li a:hover
-        {
+        .menu ul li a:hover {
             text-decoration: none;
-            color:black;    
-             
-        }
-        
-        h1
-        {
-            margin-left:-40px;
-            font-size:20px;
-        }
-        #lang
-        {
-            background-color: white;
-            width:1180px;
-            height: 60px;
-            margin-left:260px;
-            
-        }
-        #Language
-        {
-            margin-left: 1100px;
-            width:80px;
-            height:40px;
-            margin-top:10px;
-            background-color:white;
-            border-radius:30px;
-            text-align:center;
-        }
-        #dep
-        {
-            background-color:greenyellow;
             color: black;
-           
+        }
+
+        h1 {
+            margin-left: -40px;
+            font-size: 20px;
+        }
+
+        #lang {
+            background-color: white;
+            width: 1180px;
+            height: 60px;
+            margin-left: 260px;
+        }
+
+        #Language {
+            margin-left: 1100px;
+            width: 80px;
+            height: 40px;
+            margin-top: 10px;
+            background-color: white;
+            border-radius: 30px;
+            text-align: center;
+        }
+
+        #dep {
+            background-color: greenyellow;
+            color: black;
             margin-left: -40px;
         }
-        #with
-        {
-            background-color:black;
+
+        #with {
+            background-color: black;
             color: white;
-           
             margin-left: 30px;
-           
-            
         }
-        #dep,#with
-        {
-             width:80px;
-             height:40px;
-             border-radius:20px; 
+
+        #dep,
+        #with {
+            width: 80px;
+            height: 40px;
+            border-radius: 20px;
         }
-        #dep:hover, #with:hover
-        {
-            height:46px;
-            cursor:pointer;
+
+        #dep:hover,
+        #with:hover {
+            height: 46px;
+            cursor: pointer;
         }
-        #placeholderMasters
-        {
-            width:1120px;
-            height:900px;
+
+        #placeholderMasters {
+            width: 1120px;
+            height: 900px;
             background-color: white;
-            margin-left:300px;
-            margin-top: 20px
+            margin-left: 300px;
+            margin-top: 20px;
+            overflow: auto; /* Add scroll if content overflows */
+            align-content: center;
+        }
+        #formHolder
+        {
+            overflow: auto;
+            padding:200px;
+            height:400px;
+            width: 680px;
+            margin-left:20px;
+            background-color:#effbfd;
+            align-content:start;
         }
     </style>
 </head>
@@ -179,23 +180,29 @@
     <div class="container">
         <div id="lang">
             <select id="Language" name="langs" required>
-                    <option value="English">English</option>
-                    <option value="Sesotho">Sesotho</option>
-                    <!-- Add more countries as needed -->
-                </select>
+                <option value="English">English</option>
+                <option value="Sesotho">Sesotho</option>
+                <!-- Add more languages as needed -->
+            </select>
         </div>
+
+        <!-- Placeholder for including another page -->
         <div id="placeholderMasters">
-           
+            <form id="formHolder">
+                <jsp:include page="AnotherPage.jsp"/>
+            </form>
+            
         </div>
-        
+
+        <!-- Menu Section -->
         <div class="menu">
-            <h1>Standard Bank loan</h1>
+            <h1>Standard Bank Loan</h1>
             <h2>Balance : $0</h2><br>
             <button id="dep">Deposit</button>
             <button id="with">Withdraw</button>
             <br><br><br>
             <ul>
-                <li><a href="#" >Dashboard</a></li>
+                <li><a href="#">Dashboard</a></li>
                 <li><a href="#">Take Loan</a></li>
                 <li><a href="#">My Loans</a></li>
                 <li><a href="#">Deposit</a></li>
@@ -208,7 +215,6 @@
                 <li><a href="#">Logout</a></li>
             </ul>
         </div>
-        
     </div>
 </body>
 </html>
