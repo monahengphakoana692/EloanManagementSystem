@@ -82,10 +82,10 @@
 
         .menu 
         {
-            margin-top: -60px;
+            margin-top: -980px;
             width:160px;
             background-color:white;
-            height:750px;
+            height:910px;
             padding:50px;
             text-autospace:auto;
         }
@@ -165,6 +165,14 @@
             height:46px;
             cursor:pointer;
         }
+        #placeholderMasters
+        {
+            width:1120px;
+            height:900px;
+            background-color: white;
+            margin-left:300px;
+            margin-top: 20px
+        }
     </style>
 </head>
 <body>
@@ -177,7 +185,7 @@
                 </select>
         </div>
         <div id="placeholderMasters">
-            
+           
         </div>
         
         <div class="menu">
@@ -196,7 +204,7 @@
                 <li><a href="#">Support Ticket</a></li>
                 <li><a href="#">2FA Setting</a></li>
                 <li><a href="#">Profile</a></li>
-                <li><a href="#">Change Password</a></li>
+                <li><a href="#">Change Password</a></li><br><br><br><br><br><br><br><br>
                 <li><a href="#">Logout</a></li>
             </ul>
         </div>
