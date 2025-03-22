@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock Loan Ltd - Deposit Confirm</title>
+    <title>Standard bank loan Ltd - Deposit Confirm</title>
     <style>
         /* General styling */
         body {
@@ -15,10 +15,11 @@
             color: #333;
         }
 
-        .container {
-            max-width: 800px;
+        .container
+        {
+            max-width: 2000px;
             margin: 0 auto;
-            background-color: #fff;
+            background-color: #f4f4f4;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -79,17 +80,27 @@
             background-color: #0056b3;
         }
 
-        .menu {
-            margin-top: 20px;
+        .menu 
+        {
+            margin-top: -60px;
+            width:160px;
+            background-color:white;
+            height:750px;
+            padding:50px;
+            text-autospace:auto;
         }
 
-        .menu ul {
+        .menu ul 
+        {
             list-style-type: none;
             padding: 0;
+            
         }
 
-        .menu ul li {
+        .menu ul li
+        {
             margin: 10px 0;
+            margin-bottom:35px;
         }
 
         .menu ul li a {
@@ -97,42 +108,86 @@
             color: #007bff;
         }
 
-        .menu ul li a:hover {
-            text-decoration: underline;
+        .menu ul li a:hover
+        {
+            text-decoration: none;
+            color:black;    
+             
+        }
+        
+        h1
+        {
+            margin-left:-40px;
+            font-size:20px;
+        }
+        #lang
+        {
+            background-color: white;
+            width:1180px;
+            height: 60px;
+            margin-left:260px;
+            
+        }
+        #Language
+        {
+            margin-left: 1100px;
+            width:80px;
+            height:40px;
+            margin-top:10px;
+            background-color:white;
+            border-radius:30px;
+            text-align:center;
+        }
+        #dep
+        {
+            background-color:greenyellow;
+            color: black;
+           
+            margin-left: -40px;
+        }
+        #with
+        {
+            background-color:black;
+            color: white;
+           
+            margin-left: 30px;
+           
+            
+        }
+        #dep,#with
+        {
+             width:80px;
+             height:40px;
+             border-radius:20px; 
+        }
+        #dep:hover, #with:hover
+        {
+            height:46px;
+            cursor:pointer;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>ROCK LOAN LTD</h1>
-
-        <div class="balance">
-            <strong>ACCURIT BALANCE</strong><br>
-            $0.00 USD
+        <div id="lang">
+            <select id="Language" name="langs" required>
+                    <option value="English">English</option>
+                    <option value="Sesotho">Sesotho</option>
+                    <!-- Add more countries as needed -->
+                </select>
         </div>
-
-        <h2>Deposit Confirm</h2>
-        <div class="instructions">
-            <p>You have requested <strong>600 USD</strong>. Please pay <strong>60.00 $</strong> for successful payment.</p>
-            <p>Please follow the instruction below:</p>
+        <div id="placeholderMasters">
+            
         </div>
-
-        <div class="bank-details">
-            <p>Pay the equivalent Loan amount to Our Official United Bank for Africa - UBA Account. Use the details below:</p>
-            <p><strong>Account Holder Name:</strong> Desmond Kwame</p>
-            <p><strong>Account Number:</strong> 1-34555555555555</p>
-            <p>We shall alert you as soon as payment is received.</p>
-        </div>
-
-        <div class="pay-now">
-            <button>Pay Now</button>
-        </div>
-
-        <hr>
-
+        
         <div class="menu">
+            <h1>Standard Bank loan</h1>
+            <h2>Balance : $0</h2><br>
+            <button id="dep">Deposit</button>
+            <button id="with">Withdraw</button>
+            <br><br><br>
             <ul>
-                <li><a href="#">Dashboard</a></li>
+                <li><a href="#" >Dashboard</a></li>
                 <li><a href="#">Take Loan</a></li>
                 <li><a href="#">My Loans</a></li>
                 <li><a href="#">Deposit</a></li>
@@ -145,6 +200,7 @@
                 <li><a href="#">Logout</a></li>
             </ul>
         </div>
+        
     </div>
 </body>
 </html>
