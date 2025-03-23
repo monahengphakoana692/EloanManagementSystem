@@ -99,6 +99,8 @@
         <form>
             <jsp:useBean id="customers" class="eloanmanagementdb.Customers" scope="session"/>
             <% customers.fetchCustomerData((String)session.getAttribute("username")); %>
+            <jsp:useBean id="loans" class="eloanmanagementdb.Loans" scope="session"/>
+        <% loans.fetchLoanData((String)session.getAttribute("username")); %>
 
             <div class="form-group4">
                 <label for="username">Username</label>
@@ -123,6 +125,10 @@
             <div class="form-group4">
                 <label for="accountNumber">Account Number</label>
                 <input type="text" id="accountNumber" value="<jsp:getProperty name="customers" property="accNum" />" readonly>
+            </div>
+            <div class="form-group4">
+                <label for="accountNumber">Loan Account Number</label>
+                <input type="text" id="accountNumber" value="<jsp:getProperty name="loans" property="loanNum" />" readonly>
             </div>
 
             <div class="form-group4">

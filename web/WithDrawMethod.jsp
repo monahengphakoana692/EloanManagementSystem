@@ -104,7 +104,7 @@
                 <label for="gateway">Account numbers *</label>
                 <select id="gateway" name="Accnum" required>
                     <option value="">Select One</option>
-                    <option value="<jsp:getProperty name="customers" property="username" />" ><jsp:getProperty name="customers" property="accNum" /></option>
+                    <option value="<jsp:getProperty name="customers" property="accNum" />" ><jsp:getProperty name="customers" property="accNum" /></option>
                     <option value="<jsp:getProperty name="loans" property="loanNum" />"><jsp:getProperty name="loans" property="loanNum" /></option>
                     
                 </select>

@@ -21,7 +21,7 @@ public class Loans implements Serializable
     private String username = "";
     private String loantype = "";
     private String date = "";
-    private String loanNum = "";
+    private String loanNum = null;
     private String status = "";
     private float loanAmount = 0.0f;
     private float dueAmount = 0.0f;
@@ -61,7 +61,7 @@ public class Loans implements Serializable
                 this.username = "N/A";
                 this.loantype = "N/A";
                 this.date = "N/A";
-                this.loanNum = "N/A";
+                this.loanNum = null;
                 this.status = "N/A";
                 this.loanAmount = 0.0f;
                 this.dueAmount = 0.0f;

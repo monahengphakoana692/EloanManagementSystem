@@ -98,7 +98,10 @@
             for (int i = 0; i < size; i++) {
         %>
         <div class="transaction-details">
-            <h2>Application fee</h2>
+            <div class="row">
+                <p class="label">Transaction fee</p>
+                <p class="value">M0</p>
+            </div>
             <div class="row">
                 <p class="label">Date</p>
                 <p class="value"><%= transactions.getDate1(i) %></p>
@@ -106,6 +109,14 @@
             <div class="row">
                 <p class="label">Transaction Number</p>
                 <p class="value"><%= transactions.getTraNum1(i) %></p>
+            </div>
+            <div class="row">
+                <p class="label">Transaction Type</p>
+                <p class="value"><%= transactions.getTraType1(i) %></p>
+            </div>
+            <div class="row">
+                <p class="label">Account Number</p>
+                <p class="value"><%= transactions.getAccNum1(i) %></p>
             </div>
             <div class="row">
                 <p class="label">Amount</p>
