@@ -91,7 +91,7 @@
 </head>
 <body id="body1">
     <div class="container2">
-        <h1>Deposit Methods</h1 >
+        <h1>WithDraw Method</h1 >
 
         <div class="instructions">
             <p>Add funds using our system’s gateway. The deposited amount will be credited to the deposit wallet. You'll just make investments from this wallet.</p>
@@ -119,7 +119,7 @@
             <div class="form-group1">
                 <label for="currency">Currency</label>
                 <input type="text" id="currency" name="currency" value="M" readonly>
-                <input type="hidden" id="currency" name="traType" value="dep" readonly>
+                <input type="hidden" id="currency" name="traType" value="withd" readonly>
             </div>
 
             <div class="submit-button1">

@@ -24,7 +24,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        @h11 {
+        #h11 {
             text-align: center;
             color: #007bff;
             margin-bottom: 10px;
@@ -36,28 +36,6 @@
             font-size: 16px;
             color: #555;
             margin-bottom: 20px;
-        }
-
-        .filter-section {
-            margin-bottom: 20px;
-        }
-
-        .filter-section label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: #333;
-        }
-
-        .filter-section input,
-        .filter-section select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 14px;
-            margin-bottom: 15px;
-            box-sizing: border-box;
         }
 
         .transaction-details {
@@ -107,46 +85,40 @@
     </style>
 </head>
 <body id="body5">
+    <jsp:useBean id="transactions" class="eloanmanagementdb.Transactions" scope="session"/>
+    <%
+        transactions.fetchTransactionData((String) session.getAttribute("username"),
+                "SELECT * FROM transactions WHERE username = ? ORDER BY Date DESC");
+        int size = transactions.getSize();
+    %>
+        
     <div class="container5">
-        <h1 id="h11">Transactions</h1>
-        <p class="subheading">My Transactions History</p>
-
-        <!-- Filter Section -->
-        <div class="filter-section">
-            <label for="transactionNumber">Transaction Number</label>
-            <input type="text" id="transactionNumber" placeholder="Transaction Number">
-
-            <label for="type">Type</label>
-            <select id="type">
-                <option value="all">All</option>
-                <option value="deposit">Deposit</option>
-                <option value="withdraw">Withdraw</option>
-            </select>
-
-            <label for="remark">Remark</label>
-            <input type="text" id="remark" placeholder="Any">
-        </div>
-
-        <!-- Transaction Details -->
+        <h1 id="h11">Transactions (<%= size %>)</h1>
+        <%
+            for (int i = 0; i < size; i++) {
+        %>
         <div class="transaction-details">
             <h2>Application fee</h2>
             <div class="row">
                 <p class="label">Date</p>
-                <p class="value">May 17 2024 @4:19:am</p>
+                <p class="value"><%= transactions.getDate1(i) %></p>
             </div>
             <div class="row">
                 <p class="label">Transaction Number</p>
-                <p class="value">#KISNNXH1ACKX</p>
+                <p class="value"><%= transactions.getTraNum1(i) %></p>
             </div>
             <div class="row">
                 <p class="label">Amount</p>
-                <p class="amount">0.00 USD</p>
+                <p class="amount">M<%= transactions.getAmount1(i) %></p>
             </div>
             <div class="row">
                 <p class="label">Balance</p>
-                <p class="balance">0.00 USD</p>
+                <p class="balance">M<%= transactions.getBalance1(i) %></p>
             </div>
         </div>
+        <%
+            }
+        %>
     </div>
 </body>
 </html>

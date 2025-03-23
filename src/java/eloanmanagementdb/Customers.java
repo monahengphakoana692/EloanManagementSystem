@@ -17,12 +17,12 @@ public class Customers implements Serializable {
     public ResultSet rs = null;
 
     // Object attributes
-    private String P_num = "";
-    private String District = "";
+    private String p_num = "";
+    private String district = "";
     private String street = "";
     private String DOB = "";
-    private String AccNum = "";
-    private String Acctype = "";
+    private String accNum = "";
+    private String acctype = "";
     private String NID = "";
     private String username = "";
     private String pass = "";
@@ -39,77 +39,76 @@ public class Customers implements Serializable {
     }    
 
     // Fetch all customer data in one query
-    public void fetchCustomerData(String customerID) {
-        try {
-            String query = "SELECT * FROM customers WHERE username = ?";
-            pstmt = connect.prepareStatement(query);
-            pstmt.setString(1, customerID);
-            rs = pstmt.executeQuery();
+    public void fetchCustomerData(String customerID)
+    {
+    try {
+        String query = "SELECT * FROM customers WHERE username = ?";
+        pstmt = connect.prepareStatement(query);
+        pstmt.setString(1, customerID);
+        rs = pstmt.executeQuery();
 
-            if (rs.next()) {
-                this.P_num = rs.getString("P_num");
-                this.District = rs.getString("District");
-                this.street = rs.getString("street");
-                this.DOB = rs.getString("DOB");
-                this.AccNum = rs.getString("AccNum");
-                this.Acctype = rs.getString("Acctype");
-                this.NID = rs.getString("NID");
-                this.username = rs.getString("username");
-                this.pass = rs.getString("pass");
-            } else {
-                // If no data is found, set default values
-                this.P_num = "N/A";
-                this.District = "N/A";
-                this.street = "N/A";
-                this.DOB = "N/A";
-                this.AccNum = "N/A";
-                this.Acctype = "N/A";
-                this.NID = "N/A";
-                this.username = "N/A";
-                this.pass = "N/A";
-            }
-        } catch (Exception e) {
-            exceptionMessage = "Fetch Data Error: " + e.toString();
+        if (rs.next()) {
+            this.p_num = rs.getString("P_num");
+            this.district = rs.getString("District");
+            this.street = rs.getString("street");
+            this.DOB = rs.getString("DOB");
+            this.accNum = rs.getString("AccNum");
+            this.acctype = rs.getString("Acctype");
+            this.NID = rs.getString("NID");
+            this.username = rs.getString("username");
+            this.pass = rs.getString("pass");
+        } else {
+            this.p_num= "N/A";
+            this.district = "N/A";
+            this.street = "N/A";
+            this.DOB = "N/A";
+            this.accNum = "N/A";
+            this.acctype = "N/A";
+            this.NID = "N/A";
+            this.username = "N/A";
+            this.pass = "N/A";
+        }
+    } catch (Exception e) {
+        exceptionMessage = "Fetch Data Error: " + e.toString();
+    } finally {
+        try {
+            if (rs != null) rs.close();
+            if (pstmt != null) pstmt.close();
+        } catch (SQLException e) {
+            exceptionMessage = "Closing Error: " + e.toString();
         }
     }
+}
+
 
     // Getters
-    public String getP_num() {
-        return P_num;
-    }
+  public String getDistrict() {
+    return district;
+}
 
-    public String getDistrict() {
-        return District;
-    }
+public String getStreet() {
+    return street;
+}
 
-    public String getStreet() {
-        return street;
-    }
+public String getDOB() {
+    return DOB;
+}
 
-    public String getDOB() {
-        return DOB;
-    }
+public String getAccNum() {
+    return accNum;
+}
 
-    public String getAccNum() {
-        System.out.print(this.Accnum);
-        return AccNum;
-    }
+public String getNID() {
+    return NID;
+}
 
-    public String getAcctype() {
-        return Acctype;
-    }
-
-    public String getNID() {
-        return NID;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public String getPass() {
-        return pass;
-    }
+public String getUsername() {
+    return username;
+}
+public String getP_num()
+{
+    return p_num;
+}
 
     public String getExceptionMessage() {
         return exceptionMessage;

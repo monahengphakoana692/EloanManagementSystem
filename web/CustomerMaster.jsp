@@ -222,8 +222,10 @@
 
         <!-- Menu Section -->
         <div class="menu90">
+        <jsp:useBean id="Transactions" class="eloanmanagementdb.Transactions" scope="session"/>
+        <% Transactions.fetchTransactionData((String)session.getAttribute("username")); %>
             <h1 id="h190">Standard Bank Loan</h1>
-            <h2 id="h290">Balance : $0</h2><br>
+            <h2 id="h290">Balance : $<jsp:getProperty name="Transactions" property="balance" /></h2><br>
             <button id="dep" ><a href="#" onclick="callJSPMethods('DepositMethod')">Deposit</a></button>
             <button id="with" >Withdraw</button>
             <br><br><br>
@@ -233,7 +235,7 @@
                 <li><a href="#" onclick="callJSPMethods('TakeLoans')">Take Loan</a></li>
                 <li><a href="#" onclick="callJSPMethods('Myloans')">My Loans</a></li>
                 <li><a href="#" onclick="callJSPMethods('DepositMethod')">Deposit</a></li>
-                <li><a href="#" onclick="callJSPMethods('Withdraw')">Withdraw</a></li>
+                <li><a href="#" onclick="callJSPMethods('WithDrawMethod')">Withdraw</a></li>
                 <li><a href="#" onclick="callJSPMethods('Transactions')">Transactions</a></li>
                 <li><a href="#" onclick="callJSPMethods('Tickets')">Support Ticket</a></li>
                 <li><a href="#" onclick="callJSPMethods('2FASetting')">2FA Setting</a></li>

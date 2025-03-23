@@ -82,42 +82,32 @@
             padding: 5px;
         }
 
-       
+        .error-message {
+            color: red;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body id="body7">
     <div class="container7">
         <h1>Profile Setting</h1>
 
-        <!-- Profile Information -->
-        <div class="profile-info">
-            <p><span class="label">A. benson</span></p>
-            <p>moziness494@gmail.com</p>
-            <p>23323456767676</p>
-            <p><span class="label">B. Ghana</span></p>
-        </div>
-
-        <!-- Profile Picture -->
-        <div class="profile-picture">
-            <img src="placeholder.jpg" alt="Profile Picture" id="profileImage">
-            <input type="file" id="profilePictureUpload" accept="image/*" style="display: none;">
-            <button onclick="document.getElementById('profilePictureUpload').click()">Change Profile Picture</button>
-        </div>
 
         <!-- Form for Profile Details -->
         <form>
             <jsp:useBean id="customers" class="eloanmanagementdb.Customers" scope="session"/>
-                <%  customers.fetchCustomerData((String)session.getAttribute("username"));   %>
+            <% customers.fetchCustomerData((String)session.getAttribute("username")); %>
+
             <div class="form-group4">
-                <label for="firstName">userName</label>
-                
-                <input type="text" id="firstName" value="<jsp:getProperty name="customers" property="username" />" readonly>
-                
+                <label for="username">Username</label>
+                <input type="text" id="username" value="<jsp:getProperty name="customers" property="username" />" readonly>
             </div>
 
             <div class="form-group4">
-                <label for="District">District</label>
-                <input type="text" id="District" value="<jsp:getProperty name="customers" property="NID" />" readonly>
+                <label for="district">District</label>
+                <input type="text" id="district" value="<jsp:getProperty name="customers" property="district" />" readonly>
             </div>
 
             <div class="form-group4">
@@ -126,23 +116,28 @@
             </div>
 
             <div class="form-group4">
-                <label for="address">DOB</label>
-                <input type="text" id="address" value="<jsp:getProperty name="customers" property="DOB" />" readonly>
+                <label for="dob">Date of Birth</label>
+                <input type="text" id="dob" value="<jsp:getProperty name="customers" property="DOB" />" readonly>
             </div>
 
             <div class="form-group4">
-                <label for="lastName">Account number</label>
-                <input type="text" id="lastName" value="<jsp:getProperty name="customers" property="DOB" />" readonly>
+                <label for="accountNumber">Account Number</label>
+                <input type="text" id="accountNumber" value="<jsp:getProperty name="customers" property="accNum" />" readonly>
             </div>
 
             <div class="form-group4">
-                <label for="zipCode">N identity</label>
-                <input type="text" id="zipCode" value="<jsp:getProperty name="customers" property="NID" />" readonly>
+                <label for="nid">National ID</label>
+                <input type="text" id="nid" value="<jsp:getProperty name="customers" property="NID" />" readonly>
             </div>
-               <%
-                  out.print(customers.getExceptionMessage());
-               %>
-        
+            <div class="form-group4">
+                <label for="nid">Phone number</label>
+                <input type="text" id="nid" value="<jsp:getProperty name="customers" property="p_num" />" readonly>
+            </div>
+
+            <!-- Display error message if any -->
+            <div class="error-message">
+                <%= customers.getExceptionMessage() %>
+            </div>
         </form>
     </div>
 
@@ -151,7 +146,7 @@
         document.getElementById('profilePictureUpload').addEventListener('change', function(event) {
             const file = event.target.files[0];
             if (file) {
-                const reader = new FileReader();
+                const reader = new FileReader(); 
                 reader.onload = function(e) {
                     document.getElementById('profileImage').src = e.target.result;
                 };
