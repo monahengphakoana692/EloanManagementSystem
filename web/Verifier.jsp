@@ -7,81 +7,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Loan Master | eLoan Management</title>
-    
-
-
 </head>
 <body>
     <%
-            // Database connection details
-            String url = "jdbc:mysql://localhost:3306/EloanManagementDB?useSSL=false";
-            String user = "root";
-            String pass = "59908114";
-            String query = "Select username , pass from customers";
-            boolean loginCheck = false;
-            
-            
-            Connection connect = null;
-            Statement statement = null;
-            
-            try{
-                // Load the MySQL JDBC driver
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                
-                // Establish the database connection
-                connect = DriverManager.getConnection(url, user, pass);
-                
-                
-                statement = connect.createStatement();
-                
-                ResultSet rs = statement.executeQuery(query);
-                
-                String username = request.getParameter("username");
-                String password = request.getParameter("password");
-                
+        // Database connection details
+        String url = "jdbc:mysql://localhost:3306/EloanManagementDB?useSSL=false";
+        String dbUser = "root";
+        String dbPass = "59908114";
         
-                if(user!= null && user.equals("Admin"))
-                {
-                    while(rs.next())
-                    {
-                       if(password.equals(rs.getString("pass")))
-                       {
-                            %>
+        // Retrieve form data
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        
+        Connection connect = null;
+        Statement pstmt = null;
+        ResultSet rs = null;
+        boolean passchecker = false;
+        
+        try {
+            // Load the MySQL JDBC driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
             
-                            <jsp:include page="UserMaster.jsp" /><%
-                                loginCheck = true;
-                                break;
-                        }
-                    } 
-                
-                }else
-                {
-                    
-                    while(rs.next())
-                    {
-                       if(password.equals(rs.getString("pass")) && username.equals("username"))
-                       {
-                            %>
-                                <jsp:include page="CustomerMaster.jsp" /> 
-                               
-                            <%
-                                 loginCheck = true;
-                                break;
-                        }
-                    }
-                        if( loginCheck == false)
-                        {%>
-                            <jsp:include page="Login.html" /> <%
-                        }
-                    }
-                
-            }catch(Exception e)
+            // Establish the database connection
+            connect = DriverManager.getConnection(url, dbUser, dbPass);
+            
+            // SQL query to check username and password
+            String query = "SELECT username, pass FROM customers";
+            pstmt = connect.createStatement();
+           
+            
+            
+            rs = pstmt.executeQuery(query);
+            
+            while(rs.next()) 
             {
                 
+                
+                if (username.equals("Admin") )
+                {
+                     String logPass = rs.getString("pass");
+                     if(logPass.equals(password))
+                     {
+                         %>
+                            <jsp:include page="UserMaster.jsp" />
+                         <%
+                           passchecker = true;  
+                          break;   
+                     }
+                    
+                } else
+                {
+                    
+                     String userName = rs.getString("username");
+                     String logPass = rs.getString("pass");
+                     
+                     if(logPass.equals(password) && userName.equals(username))
+                     {
+                         %>
+                            <jsp:include page="CustomerMaster.jsp" />
+                        <%
+                             passchecker = true;
+                          break;    
+                     }
+                  
+                    
+                }
             }
-    %>
+                if(passchecker == false)
+                {%>
+                    <jsp:include page="Login.html" />
+                <%}
             
-   
-
+        } catch (Exception e) {
+            // Log or display the exception
+            out.println("An error occurred: " + e.getMessage());
+        } finally {
+            // Close resources
+            if (rs != null) {
+                try { rs.close(); } catch (SQLException e) { /* Ignored */ }
+            }
+            if (pstmt != null) {
+                try { pstmt.close(); } catch (SQLException e) { /* Ignored */ }
+            }
+            if (connect != null) {
+                try { connect.close(); } catch (SQLException e) { /* Ignored */ }
+            }
+        }
+    %>
 </body>
 </html>
