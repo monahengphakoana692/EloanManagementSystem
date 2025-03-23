@@ -149,6 +149,7 @@
         function applyLoan() {
             alert("Loan application approved!");
             // Add logic to handle loan approval
+            // EloanManagementDB
         }
 
         function rejectLoan() {
