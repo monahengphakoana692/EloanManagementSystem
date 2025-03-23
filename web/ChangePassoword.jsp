@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@page import="java.sql.*"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,20 +77,24 @@
         <h1 id="h14">Change Password</h1>
 
         <!-- Change Password Form -->
-        <form>
+        <form action="ChangePasswordProcess.jsp" method="POST">
             <div class="form-group5">
                 <label for="currentPassword">Current Password *</label>
-                <input type="password" id="currentPassword" required>
+                <input type="password" id="currentPassword" name="currentPassword" required>
             </div>
 
             <div class="form-group5">
-                <label for="newPassword">Password *</label>
-                <input type="password" id="newPassword" required>
+                <label for="newPassword">New Password *</label>
+                <input type="password" id="newPassword" name="newPassword" required>
             </div>
 
             <div class="form-group5">
                 <label for="confirmPassword">Confirm Password *</label>
-                <input type="password" id="confirmPassword" required>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+            </div>
+
+            <div class="form-group5">
+                <input type="hidden" id="username" name="username" value="<%= (String)session.getAttribute("username")%>" required>
             </div>
 
             <!-- Submit Button -->

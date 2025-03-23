@@ -51,6 +51,7 @@
                          %>
                             <jsp:include page="UserMaster.jsp" />
                          <%
+                           session.setAttribute("username",username);
                            passchecker = true;  
                           break;   
                      }
@@ -66,6 +67,7 @@
                          %>
                             <jsp:include page="CustomerMaster.jsp" />
                         <%
+                            session.setAttribute("username",username);
                              passchecker = true;
                           break;    
                      }
