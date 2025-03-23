@@ -106,36 +106,42 @@
 
         <!-- Form for Profile Details -->
         <form>
+            <jsp:useBean id="customers" class="eloanmanagementdb.Customers" scope="session"/>
+                <%  customers.fetchCustomerData((String)session.getAttribute("username"));   %>
             <div class="form-group4">
-                <label for="firstName">First Name</label>
-                <input type="text" id="firstName" value="Edward" readonly>
+                <label for="firstName">userName</label>
+                
+                <input type="text" id="firstName" value="<jsp:getProperty name="customers" property="username" />" readonly>
+                
             </div>
 
             <div class="form-group4">
-                <label for="state">State</label>
-                <input type="text" id="state" value="Accra" readonly>
+                <label for="District">District</label>
+                <input type="text" id="District" value="<jsp:getProperty name="customers" property="NID" />" readonly>
             </div>
 
             <div class="form-group4">
-                <label for="city">City</label>
-                <input type="text" id="city" value="Tema" readonly>
+                <label for="street">Street</label>
+                <input type="text" id="street" value="<jsp:getProperty name="customers" property="street" />" readonly>
             </div>
 
             <div class="form-group4">
-                <label for="address">Address</label>
-                <input type="text" id="address" value="Tema" readonly>
+                <label for="address">DOB</label>
+                <input type="text" id="address" value="<jsp:getProperty name="customers" property="DOB" />" readonly>
             </div>
 
             <div class="form-group4">
-                <label for="lastName">Last Name</label>
-                <input type="text" id="lastName" value="Koprmorne" readonly>
+                <label for="lastName">Account number</label>
+                <input type="text" id="lastName" value="<jsp:getProperty name="customers" property="DOB" />" readonly>
             </div>
 
             <div class="form-group4">
-                <label for="zipCode">Zip Code</label>
-                <input type="text" id="zipCode" value="00233" readonly>
+                <label for="zipCode">N identity</label>
+                <input type="text" id="zipCode" value="<jsp:getProperty name="customers" property="NID" />" readonly>
             </div>
-
+               <%
+                  out.print(customers.getExceptionMessage());
+               %>
         
         </form>
     </div>
