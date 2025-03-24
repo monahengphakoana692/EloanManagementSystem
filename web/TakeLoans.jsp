@@ -121,6 +121,8 @@
     </style>
 </head>
 <body id="body1">
+     <jsp:useBean id="LoanPlans" class="eloanmanagementdb.LoanPlans" scope="session"/>
+      <% LoanPlans.fetchLoanPlanData("Carl Loan"); %>
     <div class="container2">
         <h1>Loan Plans</h1>
         <p style="text-align: center; font-size: 16px; margin-bottom: 20px;">Take Control of Your Financial Future with Our Top Loan Recommendations.</p>
@@ -138,7 +140,7 @@
                 <div id="placeHolderLoan">
                     <div class="car-details">
                         <div class="car-info">
-                            <h2>Car Loan</h2>
+                            <h2><jsp:getProperty name="LoanPlans" property="loanType" /></h2>
                             <p class="percentage">52%</p>
                             <p>Interest Rate</p>
                             <p>→ Take Minimum: $1,000,000.00</p>

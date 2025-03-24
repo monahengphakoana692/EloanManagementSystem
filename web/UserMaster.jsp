@@ -160,29 +160,13 @@
                 <!-- Add more languages as needed -->
             </select>
         </div>
-        <%!
-            String pageNames;
-            public String callJSPMethod(String pageName)
-                {
-                    this.pageNames = pageName;
-                    
-                    return (String)pageName;
-                }
-        %>
+        
 
         <!-- Placeholder for including another page -->
         <div id="placeholderMasters">
             <form id="formHolder">
                 <div>
-                <% 
-                if (pageNames != null)
-                {
-                    
-                } else
-                {
-                    %><p>Welcome! Please select a page from the menu.</p><%
-                }
-            %>
+                    <p>Welcome! Please select a page from the menu.</p>
                 </div>
             </form>
         </div>
