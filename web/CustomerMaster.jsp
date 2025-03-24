@@ -190,31 +190,14 @@
                 <!-- Add more languages as needed -->
             </select>
         </div>
-        <%!
-            String pageNames;
-            public String callJSPMethod(String pageName)
-                {
-                    this.pageNames = pageName;
-                    
-                    return (String)pageName;
-                }
-        %>
+        
 
         <!-- Placeholder for including another page -->
         <div id="placeholderMasters90">
             <form id="formHolder90">
                 <div>
-                <% 
                
-                if (pageNames != null)
-                {
-                    
-                    
-                } else
-                {
-                    %><p>Welcome! Please select a page from the menu.</p><%
-                }
-            %>
+                    <p>Welcome to Standard bank loans</p>
                 </div>
             </form>
             
@@ -254,7 +237,7 @@
     xhr.open("GET", pageName+".jsp?page=" + pageName, true);
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            document.getElementById("placeholderMasters90").innerHTML = xhr.responseText;
+            document.getElementById("formHolder90").innerHTML = xhr.responseText;
         }
     };
     xhr.send();

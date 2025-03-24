@@ -138,7 +138,7 @@
                 <div id="placeHolderLoan">
                     <div class="car-details">
                         <div class="car-info">
-                            <h2>Car Loan</h2>
+                            <h2>Student Loan</h2>
                             <p class="percentage">52%</p>
                             <p>Interest Rate</p>
                             <p>→ Take Minimum: $1,000,000.00</p>
@@ -151,15 +151,16 @@
                     </div>
 
                 </div>
-                <div class="apply-button2">
+                 <div class="apply-button2">
                     <button>Apply Now</button>
                 </div>
+    </div>
             </form>    
          </div>
             
         </div>
 
-    </div>
+       
     <script src="script.js"></script>
    
 </body>

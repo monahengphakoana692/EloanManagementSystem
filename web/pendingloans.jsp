@@ -141,6 +141,6 @@
             <p>Given: 0</p>
         </div>
     </div>
-    <<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

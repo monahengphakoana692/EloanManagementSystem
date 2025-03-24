@@ -138,7 +138,7 @@
                 <div id="placeHolderLoan">
                     <div class="car-details">
                         <div class="car-info">
-                            <h2>Car Loan</h2>
+                            <h2>House loan</h2>
                             <p class="percentage">52%</p>
                             <p>Interest Rate</p>
                             <p>→ Take Minimum: $1,000,000.00</p>

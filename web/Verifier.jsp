@@ -10,7 +10,7 @@
 </head>
 <body>
     <%
-        // Database connection details
+        // Database connection details (should be stored in a config file or environment variables)
         String url = "jdbc:mysql://localhost:3306/EloanManagementDB?useSSL=false";
         String dbUser = "root";
         String dbPass = "59908114";
@@ -19,10 +19,16 @@
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         
+        // Check if username or password is null
+        if (username == null || password == null) {
+            response.sendRedirect("Login.html"); // Redirect to login page
+            return;
+        }
+        
         Connection connect = null;
-        Statement pstmt = null;
+        PreparedStatement pstmt = null;
         ResultSet rs = null;
-        boolean passchecker = false;
+        boolean isValidUser = false;
         
         try {
             // Load the MySQL JDBC driver
@@ -32,54 +38,34 @@
             connect = DriverManager.getConnection(url, dbUser, dbPass);
             
             // SQL query to check username and password
-            String query = "SELECT username, pass FROM customers";
-            pstmt = connect.createStatement();
-           
+            String query = "SELECT username, pass FROM customers WHERE username = ?";
+            pstmt = connect.prepareStatement(query);
+            pstmt.setString(1, username); // Set the username parameter
             
+            // Execute the query
+            rs = pstmt.executeQuery();
             
-            rs = pstmt.executeQuery(query);
-            
-            while(rs.next()) 
-            {
-                
-                
-                if (username.equals("Admin") )
-                {
-                     String logPass = rs.getString("pass");
-                     if(logPass.equals(password))
-                     {
-                         %>
-                            <jsp:include page="UserMaster.jsp" />
-                         <%
-                           session.setAttribute("username",username);
-                           passchecker = true;  
-                          break;   
-                     }
+            // Check if the user exists and the password matches
+            if (rs.next()) {
+                String dbPassword = rs.getString("pass");
+                if (dbPassword.equals(password)) {
+                    // Set the username in the session
+                    session.setAttribute("username", username);
+                    isValidUser = true;
                     
-                } else
-                {
-                    
-                     String userName = rs.getString("username");
-                     String logPass = rs.getString("pass");
-                     
-                     if(logPass.equals(password) && userName.equals(username))
-                     {
-                         %>
-                            <jsp:include page="CustomerMaster.jsp" />
-                        <%
-                            session.setAttribute("username",username);
-                             passchecker = true;
-                          break;    
-                     }
-                  
-                    
+                    // Redirect to the appropriate page based on the username
+                    if (username.equals("Admin")) {
+                        response.sendRedirect("UserMaster.jsp");
+                    } else {
+                        response.sendRedirect("CustomerMaster.jsp");
+                    }
                 }
             }
-                if(passchecker == false)
-                {%>
-                    <jsp:include page="Login.html" />
-                <%}
             
+            // If the user is not valid, redirect to the login page
+            if (!isValidUser) {
+                response.sendRedirect("Login.html");
+            }
         } catch (Exception e) {
             // Log or display the exception
             out.println("An error occurred: " + e.getMessage());
