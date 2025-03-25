@@ -7,34 +7,129 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Apply for a Loan | eLoan Management</title>
     
-    <!-- Bootstrap for responsive layout -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
-    
     <style>
         /* Bank standard colors */
-        body {
+        #bodyy {
             background-color: #f5f7fa;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        .container {
-            max-width: 600px;
+        
+        .containerr {
+            width: 600px;
             background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-top: 30px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin: 20px;
         }
-        .form-label {
-            font-weight: bold;
+        
+        h2.text-center {
+            color: #004080;
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 28px;
+            font-weight: 600;
         }
-        .btn-primary {
+        
+        .form-label1 {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+            font-size: 14px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+        
+        .form-control:focus {
+            border-color: #004080;
+            box-shadow: 0 0 0 3px rgba(0, 64, 128, 0.1);
+            outline: none;
+        }
+        
+        .form-select {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            color: #333;
+            background-color: white;
+            cursor: pointer;
+        }
+        
+        .form-select:focus {
+            border-color: #004080;
+            box-shadow: 0 0 0 3px rgba(0, 64, 128, 0.1);
+            outline: none;
+        }
+        
+        .btn-primary1 {
             background-color: #004080;
+            color: white;
             border: none;
+            padding: 14px 20px;
+            width: 100%;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
-        .btn-primary:hover {
-            background-color: #002d5a;
+        
+        .btn-primary1:hover {
+            background-color: #003366;
         }
+        
+        /* Input placeholder styling */
+        ::placeholder {
+            color: #aaa;
+            opacity: 1;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .containerr {
+                width: 90%;
+                padding: 20px;
+            }
+        }
+        
+        /* Animation for form elements */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .mb-3, div[style*="margin-bottom"] {
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        /* Delay animations for each form element */
+        .mb-3:nth-child(1) { animation-delay: 0.1s; }
+        .mb-3:nth-child(2) { animation-delay: 0.2s; }
+        .mb-3:nth-child(3) { animation-delay: 0.3s; }
+        .mb-3:nth-child(4) { animation-delay: 0.4s; }
+        .mb-3:nth-child(5) { animation-delay: 0.5s; }
+        div[style*="margin-bottom"]:last-child { animation-delay: 0.6s; }
     </style>
 
     <script>
@@ -77,53 +172,49 @@
         }
     </script>
 </head>
-<body>
+<body id="bodyy">
 
-<div class="container">
+<div class="containerr">
     <h2 class="text-center text-primary">Apply for a Loan</h2>
     <form action="processLoan.jsp" method="post" onsubmit="return validateForm();">
         
         <div class="mb-3">
-            <label class="form-label">Full Name</label>
-            <input type="text" id="name" name="name" class="form-control" placeholder="Enter your full name">
+            <label class="form-label1">Full Name</label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="Enter your full name"required>
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Email Address</label>
-            <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email">
+            <label class="form-label1">Email Address</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Phone Number</label>
-            <input type="text" id="phone" name="phone" class="form-control" placeholder="Enter your phone number">
+            <label class="form-label1">Phone Number</label>
+            <input type="text" id="phone" name="phone" class="form-control" placeholder="Enter your phone number" required>
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Loan Type</label>
-            <select id="loanType" name="loanType" class="form-select">
+            <label class="form-label1">Loan Type</label>
+            <select id="loanType" name="loanType" class="form-select" required>
                 <option value="select">-- Select Loan Type --</option>
-                <option value="home">Home Loan</option>
-                <option value="personal">Personal Loan</option>
-                <option value="education">Education Loan</option>
+                <option value="home">House Loan</option>
+                <option value="personal">Quick Loan</option>
                 <option value="car">Car Loan</option>
                 <option value="business">Business Loan</option>
             </select>
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Loan Amount (Min: 1,000 - Max: 5,000,000)</label>
-            <input type="number" id="amount" name="amount" class="form-control" placeholder="Enter loan amount">
+            <label class="form-label1">Loan Amount (Min: 1,000 - Max: 5,000,000)</label>
+            <input type="number" id="amount" name="amount" class="form-control" placeholder="Enter loan amount"required>
         </div>
 
-        <div class="text-center">
-            <button type="submit" class="btn btn-primary">Apply Now</button>
+        <div>
+            <button type="submit" class="btn btn-primary1">Apply Now</button>
         </div>
 
     </form>
 </div>
-
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

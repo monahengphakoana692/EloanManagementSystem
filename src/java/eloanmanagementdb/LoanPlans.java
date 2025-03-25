@@ -22,6 +22,7 @@ public class LoanPlans implements Serializable {
     private String installmentPercent = "";
     private String installmentInterval = ""; // in days
     private String totalInstallment = "";
+    private boolean isLoanChosen = false;
 
     // Constructor
     public LoanPlans() {
@@ -45,12 +46,12 @@ public class LoanPlans implements Serializable {
 
             if (rs.next()) {
                 this.loanType = rs.getString("loanType");
-                this.interestRate = rs.getString("interestRate");
-                this.minAmount = rs.getFloat("minAmount");
-                this.maxAmount = rs.getFloat("maxAmount");
-                this.installmentPercent = rs.getString("installmentPercent");
-                this.installmentInterval = rs.getString("installmentInterval");
-                this.totalInstallment = rs.getString("totalInstallment");
+                this.interestRate = rs.getString("interest");
+                this.minAmount = rs.getFloat("miniAm");
+                this.maxAmount = rs.getFloat("maxiAm");
+                this.installmentPercent = rs.getString("P_instal");
+                this.installmentInterval = rs.getString("instal_interval");
+                this.totalInstallment = rs.getString("total_instal");
             } else {
                 // If no data is found, set default values
                 this.loanType = "N/A";
@@ -71,6 +72,11 @@ public class LoanPlans implements Serializable {
                 exceptionMessage = "Closing Error: " + e.toString();
             }
         }
+    }
+    
+    public void setIsLoanChosen(boolean value)
+    {
+        this.isLoanChosen = value;
     }
 
     // Getters
@@ -104,6 +110,10 @@ public class LoanPlans implements Serializable {
 
     public String getExceptionMessage() {
         return exceptionMessage;
+    }
+    public boolean getIsLoanChosen()
+    {
+        return isLoanChosen;
     }
 
     // Close the database connection

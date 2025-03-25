@@ -184,10 +184,10 @@
 <body id="body90">
     <div class="container90">
         <div id="lang90">
+            <label for="Language90">Select Language:</label>
             <select id="Language90" name="langs" required>
-                <option value="English">English</option>
-                <option value="Sesotho">Sesotho</option>
-                <!-- Add more languages as needed -->
+            <option value="English">English</option>
+            <option value="Sesotho">Sesotho</option>
             </select>
         </div>
         
@@ -217,7 +217,7 @@
                 <li><a href="#" onclick="callJSPMethods('dashboard')">Dashboard</a></li>
                 <li><a href="#" onclick="callJSPMethods('TakeLoans')">Take Loan</a></li>
                 <li><a href="#" onclick="callJSPMethods('Myloans')">My Loans</a></li>
-                <li><a href="#" onclick="callJSPMethods('DepositMethod')">Deposit</a></li>
+                <li><a href="#" onclick="callJSPMethods('DespositMethod')">Deposit</a></li>
                 <li><a href="#" onclick="callJSPMethods('WithDrawMethod')">Withdraw</a></li>
                 <li><a href="#" onclick="callJSPMethods('Transactions')">Transactions</a></li>
                 <li><a href="#" onclick="callJSPMethods('Tickets')">Support Ticket</a></li>

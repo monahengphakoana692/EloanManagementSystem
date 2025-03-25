@@ -15,7 +15,7 @@
       
         
         Connection connect = null;
-        PreparedStatement  pstmt = null;
+        Statement stmt = null;
         ResultSet rs = null;
         boolean passchecker = false;
         
@@ -46,10 +46,13 @@
             String traType = request.getParameter("traType");
             String amountStr = request.getParameter("amount");
             String currency = request.getParameter("currency");
+        %>
+        <%= Accnum %>
+        <%
 
             // Validate input
             if (Accnum== null || amountStr == null || currency == null) {
-                out.println("<p>Error: Missing form data. Please go back and fill out the form.</p>");
+                out.println("<p>Error: Missing form data. Please go back and fill in the form.</p>");
                 return;
             }
 
@@ -69,10 +72,9 @@
             // Fetch the latest balance for the user
             float currentBalance = 0.0f;
             try {
-                String query = "SELECT Balance FROM transactions WHERE username = ? ORDER BY Date DESC LIMIT 1";
-                pstmt = connect.prepareStatement(query);
-                pstmt.setString(1, username);
-                rs = pstmt.executeQuery();
+                String query = "SELECT Balance FROM transactions WHERE username = '" + username + "' ORDER BY Date DESC LIMIT 1";
+                stmt = connect.createStatement();
+                rs = stmt.executeQuery(query);
 
                 if (rs.next()) {
                     currentBalance = rs.getFloat("Balance");
@@ -82,7 +84,7 @@
                 }
 
                 rs.close();
-                pstmt.close();
+                stmt.close();
             } catch (SQLException e) {
                 out.println("<p>Error fetching balance: " + e.getMessage() + "</p>");
                 return;
@@ -106,24 +108,17 @@
 
             // Insert the new transaction into the database
             try {
-                String insertQuery = "INSERT INTO transactions (username, Tra_type, Date, accNum, tra_num, Amount, Balance) VALUES (?, ?, ?, ?, ?, ?, ?)";
-                PreparedStatement insertStmt = connect.prepareStatement(insertQuery);
-                insertStmt.setString(1, username);
-                insertStmt.setString(2, traType);
-                 insertStmt.setString(3, date.toString()); 
-                insertStmt.setString(4, Accnum); 
-                insertStmt.setString(5, traNum); 
-                insertStmt.setFloat(6, amount);
-                insertStmt.setFloat(7, newBalance);
-
-                int rowsInserted = insertStmt.executeUpdate();
+                String insertQuery = "INSERT INTO transactions (username, Tra_type, Date, accNum, tra_num, Amount, Balance) VALUES ('" + 
+                    username + "', '" + traType + "', '" + date.toString() + "', '" + Accnum + "', '" + traNum + "', " + amount + ", " + newBalance + ")";
+                stmt = connect.createStatement();
+                int rowsInserted = stmt.executeUpdate(insertQuery);
                 if (rowsInserted > 0) {
                     out.println("<p>Transaction successful! New balance: " + newBalance + "</p>");
                 } else {
                     out.println("<p>Error: Transaction failed to insert.</p>");
                 }
 
-                insertStmt.close();
+                stmt.close();
             } catch (SQLException e) {
                 out.println("<p>Error inserting transaction: " + e.getMessage() + "</p>");
             } finally {
@@ -135,5 +130,5 @@
                 out.println("wow errors : ");
             }
         %>
-    </body>
+        </body>
 </html>

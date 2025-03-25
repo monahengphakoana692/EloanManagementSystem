@@ -16,7 +16,7 @@
         }
 
         .container9 {
-            max-width: 1200px;
+            width: 1200px;
             margin: 0 auto;
             background-color: white;
             padding: 20px;
@@ -94,7 +94,7 @@
         }
     </style>
 </head>
-<body id="body1">
+<body id="body9">
     <div class="container9">
         <h1 id="h19">Pending Loans</h1>
         <table>

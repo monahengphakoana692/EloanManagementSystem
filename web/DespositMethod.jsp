@@ -89,12 +89,12 @@
         }
     </style>
 </head>
-<body id="body1">
+<body id="body2">
     <div class="container2">
         <h1>Deposit Methods</h1 >
 
         <div class="instructions">
-            <p>Add funds using our system’s gateway. The deposited amount will be credited to the deposit wallet. You'll just make investments from this wallet.</p>
+            <p>Add funds using our system’s Account numbers. The deposited amount will be credited to the deposit wallet. You'll just make investments from this wallet.</p>
         </div>
         <jsp:useBean id="customers" class="eloanmanagementdb.Customers" scope="session"/>
         <jsp:useBean id="loans" class="eloanmanagementdb.Loans" scope="session"/>
@@ -119,7 +119,7 @@
             <div class="form-group1">
                 <label for="currency">Currency</label>
                 <input type="text" id="currency" name="currency" value="M" readonly>
-                <input type="hidden" id="currency" name="traType" value="dep" readonly>
+                <input type="hidden" id="traType" name="traType" value="dep" readonly>
             </div>
 
             <div class="submit-button1">

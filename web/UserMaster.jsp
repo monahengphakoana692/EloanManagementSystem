@@ -117,7 +117,7 @@
         #formHolder {
             overflow: auto;
             padding: 200px;
-            height: 400px;
+            height: 480px;
             width: 680px;
             margin-left: 20px;
             background-color: #effbfd;

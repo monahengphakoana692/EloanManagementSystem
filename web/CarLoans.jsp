@@ -122,6 +122,8 @@
 </head>
 <body id="body1">
     <div class="container2">
+         <jsp:useBean id="LoanPlans" class="eloanmanagementdb.LoanPlans" scope="session"/>
+        <% LoanPlans.fetchLoanPlanData("Car Loan"); %>
         <h1>Loan Plans</h1>
         <p style="text-align: center; font-size: 16px; margin-bottom: 20px;">Take Control of Your Financial Future with Our Top Loan Recommendations.</p>
 
@@ -138,21 +140,21 @@
                 <div id="placeHolderLoan">
                     <div class="car-details">
                         <div class="car-info">
-                            <h2>Car Loan</h2>
-                            <p class="percentage">52%</p>
-                            <p>Interest Rate</p>
-                            <p>→ Take Minimum: $1,000,000.00</p>
-                            <p>→ Take Maximum: $1,000,000,000.00</p>
-                            <p>→ Per Installment: 38%</p>
-                            <p>→ Installment Interval: 365 Days</p>
-                            <p>→ Total Installment: 4</p>
+                            <h2><jsp:getProperty name="LoanPlans" property="loanType" /></h2>
+                            
+                            <p>Interest Rate <p class="percentage"><jsp:getProperty name="LoanPlans" property="interestRate" />%</p></p>
+                            <p>→ Take Minimum: $<jsp:getProperty name="LoanPlans" property="minAmount" /></p>
+                            <p>→ Take Maximum: $<jsp:getProperty name="LoanPlans" property="maxAmount" /></p>
+                            <p>→ Per Installment: <jsp:getProperty name="LoanPlans" property="installmentPercent" />%</p>
+                            <p>→ Installment Interval: <jsp:getProperty name="LoanPlans" property="installmentInterval" /></p>
+                            <p>→ Total Installment:<jsp:getProperty name="LoanPlans" property="totalInstallment" /></p>
                         </div>
 
                     </div>
 
                 </div>
                 <div class="apply-button2">
-                    <button>Apply Now</button>
+                    <button onclick="callJSPMethods('ApplyForm')">Apply Now</button>
                 </div>
             </form>    
          </div>

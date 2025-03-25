@@ -89,7 +89,7 @@
         }
     </style>
 </head>
-<body id="body1">
+<body id="body2">
     <div class="container2">
         <h1>WithDraw Method</h1 >
 
@@ -119,7 +119,7 @@
             <div class="form-group1">
                 <label for="currency">Currency</label>
                 <input type="text" id="currency" name="currency" value="M" readonly>
-                <input type="hidden" id="currency" name="traType" value="withd" readonly>
+                <input type="hidden" id="traType" name="traType" value="withd" readonly>
             </div>
 
             <div class="submit-button1">

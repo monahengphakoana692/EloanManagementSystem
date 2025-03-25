@@ -54,21 +54,17 @@
                     isValidUser = true;
                     
                     // Redirect to the appropriate page based on the username
-                    if (username.equals("Admin"))
-                    {
-                        %><jsp:include page="UserMaster.jsp" /><%
-                            
+                    if (username.equals("Admin")) {
+                        response.sendRedirect("UserMaster.jsp");
                     } else {
-                        
-                        %><jsp:include page="CustomerMaster.jsp" /><%
+                        response.sendRedirect("CustomerMaster.jsp");
                     }
                 }
             }
             
             // If the user is not valid, redirect to the login page
             if (!isValidUser) {
-               
-                %><jsp:include page="Login.html" /><%
+                response.sendRedirect("Login.html");
             }
         } catch (Exception e) {
             // Log or display the exception
