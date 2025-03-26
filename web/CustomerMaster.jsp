@@ -188,7 +188,7 @@
                 <li><a href="#" onclick="callJSPMethods('Myloans')">My Loans</a></li>
                 <li><a href="#" onclick="callJSPMethods('Transactions')">Transactions</a></li>
                 <li><a href="#" onclick="callJSPMethods('Tickets')">Support Ticket</a></li>
-                <li><a href="#" onclick="callJSPMethods('2FASetting')">2FA Setting</a></li>
+                <li><a href="#" onclick="callJSPMethods('ApplyForm')">Apply Form</a></li>
                 <li><a href="#" onclick="callJSPMethods('Profile')">Profile</a></li>
                 <li><a href="#" onclick="callJSPMethods('ChangePassoword')">Change Password</a></li>
                 <li><a href="#" onclick="callJSPMethods('Logout')">Logout</a></li>
@@ -221,7 +221,7 @@
         function callJSPMethods(pageName) {
             // Validate pageName to prevent XSS
             const validPages = ['dashboard', 'TakeLoans', 'Myloans', 'DespositMethod', 
-                              'WithDrawMethod', 'Transactions', 'Tickets', '2FASetting', 
+                              'WithDrawMethod', 'Transactions', 'Tickets', 'ApplyForm', 
                               'Profile', 'ChangePassoword', 'Logout'];
             
             if (!validPages.includes(pageName)) {

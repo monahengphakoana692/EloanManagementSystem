@@ -1,13 +1,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.sql.*, java.util.Date, java.util.*" %>
+<%@page import="java.sql.*, java.util.*,java.util.Date, java.security.*" %>
 <%@ page session="true" %>
 <%
-    // Database connection parameters
+    // Database configuration
     String url = "jdbc:mysql://localhost:3306/EloanManagementDB?useSSL=false";
     String dbUser = "root";
     String dbPass = "59908114";
     
-    // Get form data
+    // Get parameters directly without validation
     String username = (String) session.getAttribute("username");
     String fullNames = request.getParameter("name");
     String email = request.getParameter("email");
@@ -15,106 +15,57 @@
     String loantype = request.getParameter("loanType");
     String amountStr = request.getParameter("amount");
     
-    // Validate required fields
-    if (username == null || fullNames == null || loantype == null || amountStr == null || 
-        fullNames.isEmpty() || loantype.equals("select") || amountStr.isEmpty()) {
-        session.setAttribute("error", "Please fill in all required fields");
-        response.sendRedirect("CustomerMaster.jsp");
-        return;
-    }
-    
-    // Parse amount
-    float loanAmount = 0;
-    try {
-        loanAmount = Float.parseFloat(amountStr);
-    } catch (NumberFormatException e) {
-        session.setAttribute("error", "Invalid loan amount format");
-        response.sendRedirect("CustomerMaster.jsp");
-        return;
-    }
-    
-    // Validate amount range
-    if (loanAmount < 1000 || loanAmount > 5000000) {
-        session.setAttribute("error", "Loan amount must be between 1,000 and 5,000,000");
-        response.sendRedirect("CustomerMaster.jsp");
-        return;
-    }
-    
     // Generate loan number
     String characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    int length = 14;
-    StringBuilder loanNum = new StringBuilder(length);
-    Random random = new Random();
-    for (int i = 0; i < length; i++) {
-        int randomIndex = random.nextInt(characters.length());
-        loanNum.append(characters.charAt(randomIndex));
+    SecureRandom random = new SecureRandom();
+    StringBuilder loanNum = new StringBuilder(14);
+    for (int i = 0; i < 14; i++) {
+        loanNum.append(characters.charAt(random.nextInt(characters.length())));
     }
     
-    // Get current date as string
-    String date = new Date().toString();
+    // Get current date
+    Date date = new Date();
     
-    // Calculate due amount (loan amount + 27)
+    
+    // Calculate due amount (simple addition)
+    float loanAmount = Float.parseFloat(amountStr);
     float dueAmount = loanAmount + 27;
     
     Connection conn = null;
-    Statement stmt = null;
-    ResultSet rs = null;
+    PreparedStatement pstmt = null;
     
     try {
-        // Load JDBC driver
+        // Load JDBC driver and establish connection
         Class.forName("com.mysql.cj.jdbc.Driver");
-        
-        // Create connection
         conn = DriverManager.getConnection(url, dbUser, dbPass);
-        stmt = conn.createStatement();
         
-        // MIRROR DATA: First verify user exists
-        String checkUserSql = "SELECT * FROM customers WHERE username = '" + username + "'";
-        rs = stmt.executeQuery(checkUserSql);
+        // Insert loan application
+        String insertSql = "INSERT INTO loans (username, loantype, Date, loanNum, status, " +
+                         "loanAmount, DueAmount, amountPaid, fullNames, email) " +
+                         "VALUES (?, ?, ?, ?, 'Pending', ?, ?, 0, ?, ?)";
         
-        if (!rs.next()) {
-            session.setAttribute("error", "User not found in database");
-            response.sendRedirect("CustomerMaster.jsp");
-            return;
-        }
+        pstmt = conn.prepareStatement(insertSql);
+        pstmt.setString(1, username);
+        pstmt.setString(2, loantype);
+        pstmt.setString(3, date.toString());
+        pstmt.setString(4, loanNum.toString());
+        pstmt.setFloat(5, loanAmount);
+        pstmt.setFloat(6, dueAmount);
+        pstmt.setString(7, fullNames);
+        pstmt.setString(8, email);
+       
         
-        // MIRROR DATA: Verify email matches user record
-        String dbEmail = rs.getString("email");
-        if (!dbEmail.equals(email)) {
-            session.setAttribute("error", "Email doesn't match user record");
-            response.sendRedirect("CustomerMaster.jsp");
-            return;
-        }
+        pstmt.executeUpdate();
         
-        // Insert loan record
-        String insertSql = "INSERT INTO loans (username, loantype, Date, loanNum, status, loanAmount, DueAmount, amountPaid, fullNames, email, phone) " +
-                         "VALUES ('" + username + "', '" + loantype + "', '" + date + "', '" + loanNum.toString() + 
-                         "', 'Pending', " + loanAmount + ", " + dueAmount + ", 0, '" + fullNames + "', '" + email + "', '" + phone + "')";
+        // Redirect with success
+        response.sendRedirect("CustomerMaster.jsp?success=Loan applied successfully");
         
-        int rowsAffected = stmt.executeUpdate(insertSql);
-        
-        if (rowsAffected > 0) {
-            // Update user's loan status
-            String updateUserSql = "UPDATE customers SET has_loan = 'Y' WHERE username = '" + username + "'";
-            stmt.executeUpdate(updateUserSql);
-            
-            // Success - redirect with success message
-            session.setAttribute("success", "Loan application submitted successfully. Loan Number: " + loanNum.toString());
-            response.sendRedirect("CustomerMaster.jsp");
-        } else {
-            session.setAttribute("error", "Failed to process loan application");
-            response.sendRedirect("CustomerMaster.jsp");
-        }
-    } catch (ClassNotFoundException e) {
-        session.setAttribute("error", "System error: JDBC driver not found");
-        response.sendRedirect("CustomerMaster.jsp");
-    } catch (SQLException e) {
-        session.setAttribute("error", "Database error: " + e.getMessage());
-        response.sendRedirect("CustomerMaster.jsp");
+    } catch (Exception e) {
+        // Redirect with error
+        response.sendRedirect("ApplyForm.jsp?error=Application failed: " + e.getMessage());
     } finally {
-        // Close resources
-        if (rs != null) try { rs.close(); } catch (SQLException e) { /* ignore */ }
-        if (stmt != null) try { stmt.close(); } catch (SQLException e) { /* ignore */ }
-        if (conn != null) try { conn.close(); } catch (SQLException e) { /* ignore */ }
+        // Clean up resources
+        if (pstmt != null) try { pstmt.close(); } catch (SQLException e) { }
+        if (conn != null) try { conn.close(); } catch (SQLException e) { }
     }
 %>
