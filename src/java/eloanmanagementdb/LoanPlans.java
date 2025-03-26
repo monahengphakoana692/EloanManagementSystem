@@ -23,6 +23,7 @@ public class LoanPlans implements Serializable {
     private String installmentInterval = ""; // in days
     private String totalInstallment = "";
     private boolean isLoanChosen = false;
+    private double EMI;
 
     // Constructor
     public LoanPlans() {
@@ -127,5 +128,17 @@ public class LoanPlans implements Serializable {
             exceptionMessage = "Connection Closing Error: " + e.toString();
         }
         return exceptionMessage;
+    }
+    public void setEMI(float amount)
+    {
+        
+        this.EMI = amount *Double.parseDouble(this.interestRate ) *
+            Math.pow(1 + Double.parseDouble(this.interestRate),Double.parseDouble(this.installmentInterval)) /
+            (Math.pow(1 + Double.parseDouble(this.interestRate), Double.parseDouble(this.installmentInterval)) - 1);
+    }
+    
+    public double getEMI()
+    {
+        return EMI;
     }
 }

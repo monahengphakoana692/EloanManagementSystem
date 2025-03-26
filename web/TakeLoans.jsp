@@ -62,36 +62,6 @@
             background-color: #0056b3;
         }
 
-        .loan-details {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-
-        .loan-details .loan-info2 {
-            flex: 1;
-            padding: 20px;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-            margin: 0 10px;
-        }
-
-        .loan-details .loan-info2 h2 {
-            color: #007bff;
-            margin-bottom: 10px;
-        }
-
-        .loan-details .loan-info2 p {
-            margin: 5px 0;
-            font-size: 14px;
-        }
-
-        .loan-details .loan-info2 .percentage {
-            font-size: 24px;
-            font-weight: bold;
-            color: #007bff;
-        }
-
         .apply-button2 {
             text-align: center;
             margin-top: 20px;
@@ -111,22 +81,38 @@
             background-color: #0056b3;
         }
 
-        #placeHolderLoan {
-            overflow: auto;
+        /* EMI Calculator Styles */
+        .emi-calculator {
+            margin-top: 20px;
             padding: 20px;
-            height: 400px;
-            width: 560px;
-            margin-left: 20px;
-            background-color: #effbfd;
-            align-content: center;
+            background-color: #f0f8ff;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        
-        button a
-        {
-            text-decoration: none;
-            color: white;
+
+        .emi-input {
+            margin-bottom: 15px;
+        }
+
+        .emi-input label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .emi-input input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .emi-result {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #e6f7ff;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 18px;
         }
     </style>
 </head>
@@ -157,22 +143,95 @@
                             <p>→ Take Maximum: $<jsp:getProperty name="LoanPlans" property="maxAmount" /></p>
                             <p>→ Per Installment: <jsp:getProperty name="LoanPlans" property="installmentPercent" />%</p>
                             <p>→ Installment Interval: <jsp:getProperty name="LoanPlans" property="installmentInterval" /></p>
-                            <p>→ Total Installment:<jsp:getProperty name="LoanPlans" property="totalInstallment" /></p>
+                            <p>→ Total Installment: <jsp:getProperty name="LoanPlans" property="totalInstallment" /></p>
                         </div>
-
+                        
+                        <div class="emi-calculator">
+                            <h3>EMI Calculator</h3>
+                            <div class="emi-input">
+                                <label for="LoanAmount">Loan Amount ($):</label>
+                                <input type="number" id="LoanAmount" name="LoanAmount" 
+                                       min="<jsp:getProperty name='LoanPlans' property='minAmount' />" 
+                                       max="<jsp:getProperty name='LoanPlans' property='maxAmount' />" 
+                                       placeholder="Enter loan amount" required>
+                            </div>
+                            <div class="emi-result" id="Emis">
+                                Your EMI will be displayed here
+                            </div>
+                        </div>
                     </div>
-
                 </div>
                 <div class="apply-button2">
-                    <button onclick="callJSPMethods('ApplyForm')">Apply Now</button>
+                    <button type="button" onclick="calculateEMI()">Calculate EMI</button>
                 </div>
             </form>    
          </div>
-            
-        </div>
-
     </div>
-    <script src="script.js"></script>
-   
+                        
+    <script>
+    function calculateEMI() 
+{
+    let loanAmount = parseFloat(document.getElementById("LoanAmount").value);
+
+    // Get interest rate and total installments dynamically
+    let interestRate = parseInt(<jsp:getProperty name="LoanPlans" property="interestRate" />);
+    let totalInstallments = parseInt(<jsp:getProperty name="LoanPlans" property="totalInstallment" />);
+
+    // Validate input
+    if (isNaN(loanAmount)) {
+        document.getElementById("Emis").innerHTML = "Please enter a valid loan amount";
+        return;
+    }
+    
+    if (loanAmount < 1000) {
+        document.getElementById("Emis").innerHTML = "Minimum loan amount is $1,000";
+        return;
+    }
+
+    // Convert annual interest rate to monthly
+    let monthlyInterestRate = (interestRate / 100) / 12;
+
+    // EMI Calculation
+    let emi = loanAmount * monthlyInterestRate * 
+              Math.pow(1 + monthlyInterestRate, totalInstallments) /
+              (Math.pow(1 + monthlyInterestRate, totalInstallments) - 1);
+
+    // Format and display result
+    let formattedAmount = new Intl.NumberFormat('en-US', { 
+        style: 'currency', currency: 'USD' 
+    }).format(emi.toFixed(2));
+
+    document.getElementById("Emis").innerHTML = 
+        `Your Monthly EMI: <strong>${formattedAmount}</strong> for ${totalInstallments} months`;
+}
+
+// Add event listener for real-time calculation
+document.getElementById("LoanAmount").addEventListener("input", function() {
+    let amount = parseFloat(this.value) || 0;
+    if (amount >= 1000) {  
+        calculateEMI();
+    } else if (this.value === "") {
+        document.getElementById("Emis").innerHTML = "Your EMI will be displayed here";
+    } else {
+        document.getElementById("Emis").innerHTML = "Minimum loan amount is $1,000";
+    }
+});
+
+
+    // Add event listener for real-time calculation
+    document.getElementById("LoanAmount").addEventListener("input", function() {
+        let amount = parseFloat(this.value) || 0;
+        if (amount >= 1000) {  // Only calculate if amount is ≥ 1000
+            calculateEMI();
+        } else if (this.value === "") {
+            document.getElementById("Emis").innerHTML = "Your EMI willlll be displayed here";
+        } else {
+            document.getElementById("Emis").innerHTML = "Minimum loan amount is $1,000";
+        }
+    });
+    
+    
+</script>
+
 </body>
 </html>

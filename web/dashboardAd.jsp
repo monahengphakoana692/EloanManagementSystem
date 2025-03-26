@@ -8,7 +8,7 @@
     <title>Dashboard</title>
     <style>
         /* General Reset */
-        body {
+        #body1 {
             margin: 0;
             font-family: Arial, sans-serif;
         }
@@ -19,7 +19,7 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
             padding: 20px;
-            margin-top: -400px;
+            margin-top: -20px;
         }
 
         /* Card Styles */
@@ -111,7 +111,7 @@
         }
     </style>
 </head>
-<body>
+<body id="body1">
     <div class="dashboard-container">
         <!-- Total Users Card -->
         <div class="card card-total-users">
