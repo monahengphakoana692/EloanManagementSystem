@@ -184,7 +184,7 @@
             
             <ul class="menu-list">
                 <li><a href="#" onclick="callJSPMethods('dashboard')">Dashboard</a></li>
-                <li><a href="#" onclick="callJSPMethods('TakeLoans')">Take Loan</a></li>
+                <li><a href="#" onclick="callJSPMethods('ApplicationForm')">Take Loan</a></li>
                 <li><a href="#" onclick="callJSPMethods('Myloans')">My Loans</a></li>
                 <li><a href="#" onclick="callJSPMethods('Transactions')">Transactions</a></li>
                 <li><a href="#" onclick="callJSPMethods('Tickets')">Support Ticket</a></li>
@@ -221,7 +221,7 @@
         function callJSPMethods(pageName) {
             // Validate pageName to prevent XSS
             const validPages = ['dashboard', 'TakeLoans', 'Myloans', 'DespositMethod', 
-                              'WithDrawMethod', 'Transactions', 'Tickets', 'ApplyForm', 
+                              'WithDrawMethod', 'Transactions', 'Tickets', 'ApplicationForm', 
                               'Profile', 'ChangePassoword', 'Logout'];
             
             if (!validPages.includes(pageName)) {
