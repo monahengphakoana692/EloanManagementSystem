@@ -221,7 +221,7 @@
         function callJSPMethods(pageName) {
             // Validate pageName to prevent XSS
             const validPages = ['dashboard', 'TakeLoans', 'Myloans', 'DespositMethod', 
-                              'WithDrawMethod', 'Transactions', 'Tickets', 'ApplicationForm', 
+                              'WithDrawMethod', 'Transactions', 'Tickets', 'ApplyForm', 
                               'Profile', 'ChangePassoword', 'Logout'];
             
             if (!validPages.includes(pageName)) {

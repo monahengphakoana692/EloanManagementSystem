@@ -65,7 +65,8 @@
 <body id="body4">
     <div class="container4">
         <h1>My Loans</h1>
-
+        <jsp:useBean id="loans" class="eloanmanagementdb.Loans" scope="application"/>
+        <%  loans.fetchLoanData((String)session.getAttribute("username"));%>
         <!-- Loan Details Table -->
         <table>
             <thead>
@@ -80,12 +81,12 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>Student Loan</td>
-                    <td>May 17 2024 @4:19:am</td>
-                    <td>K1SNNXH1ACKX</td>
-                    <td class="status">Pending</td>
-                    <td>200.00 USD</td>
-                    <td class="amount-due">$244.00 (Need to pay)</td>
+                    <td><jsp:getProperty name="loans" property="loantype"/></td>
+                    <td> <jsp:getProperty name="loans" property="date"/></td>
+                    <td><jsp:getProperty name="loans" property="loanNum"/></td>
+                    <td class="status"><jsp:getProperty name="loans" property="status"/></td>
+                    <td><jsp:getProperty name="loans" property="loanAmount"/></td>
+                    <td class="amount-due">$<jsp:getProperty name="loans" property="dueAmount"/>(Need to pay)</td>
                 </tr>
                 <!-- Add more rows as needed -->
             </tbody>
