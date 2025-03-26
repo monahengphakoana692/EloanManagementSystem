@@ -78,7 +78,8 @@ public class Loans implements Serializable
             }
         }
     }
-
+    
+    
     // Getters
     public String getUsername() {
         return username;

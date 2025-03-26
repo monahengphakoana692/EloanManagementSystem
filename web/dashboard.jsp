@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page session="true" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -98,30 +99,32 @@
 <body id="body3">
     <div class="container3">
         <h1>Dashboard</h1>
+<jsp:useBean id="Trans" class="eloanmanagementdb.Transactions" scope="session"/>
+
+
 
         <!-- Successful Deposits Section -->
         <div class="section">
             <h2>Successful Deposits</h2>
-            <div class="balance">0.00 USD</div>
+            <div class="balance">M <%= Trans.numOfDeposits((String)session.getAttribute("username")) %> </div>
             <div class="status">
                 <div>
                     <p>Submitted</p>
-                    <p class="amount">$0.00</p>
+                    <p class="amount">M <%= Trans.numOfDeposits((String)session.getAttribute("username")) %></p>
                 </div>
                 <div>
                     <p>Pending</p>
-                    <p class="amount">$0.00</p>
+                    <p class="amount">M <%= Trans.numOfDeposits((String)session.getAttribute("username")) %></p>
                 </div>
                 <div>
                     <p>Rejected</p>
-                    <p class="amount">$0.00</p>
+                    <p class="amount">M <%= Trans.numOfDeposits((String)session.getAttribute("username")) %></p>
                 </div>
             </div>
-            <div class="request-info">
-                <p>You've requested to deposit $180.00. Where $180.00 is just initiated but not submitted.</p>
-            </div>
+            
         </div>
-
+<jsp:useBean id="loanplans" class="eloanmanagementdb.LoanPlans" scope="session"/>
+<jsp:useBean id="loans" class="eloanmanagementdb.Loans" scope="session"/>
         <!-- My Running Loans Section -->
         <div class="section">
             <h2>My Running Loans</h2>
@@ -132,18 +135,18 @@
                         <th>Plan Name</th>
                         <th>Loan Amount</th>
                         <th>Installment</th>
-                        <th>Installment Amount</th>
-                        <th>Next Installment</th>
+                        <th>Installment Interval</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>001</td>
-                        <td>Car Loan</td>
-                        <td>$10,000.00</td>
-                        <td>4/12</td>
-                        <td>$833.33</td>
-                        <td>2023-11-01</td>
+                        <td><jsp:getProperty name="loans" property="loanNum" /></td>
+                        <td><jsp:getProperty name="loans" property="loantype" /></td>
+                        <td>M <jsp:getProperty name="loans" property="loanAmount" /></td>
+                        <td><%= loanplans.getInstallmentInterval() %> <jsp:getProperty name="loanplans" property="installmentPercent" /></td>
+                        <td> <jsp:getProperty name="loanplans" property="installmentInterval" /></td>
+                    
                     </tr>
                     <!-- Add more rows as needed -->
                 </tbody>
@@ -152,26 +155,22 @@
 
         <!-- Successful Withdrawals Section -->
         <div class="section">
-            <h2>Successful Withdrawals</h2>
-            <div class="balance">0.00 USD</div>
+            <h2>Successful WithDraws</h2>
+            <div class="balance">M <%= Trans.numOfWithDrawls((String)session.getAttribute("username")) %> </div>
             <div class="status">
                 <div>
                     <p>Submitted</p>
-                    <p class="amount">$0.00</p>
+                    <p class="amount">M <%= Trans.numOfWithDrawls((String)session.getAttribute("username")) %></p>
                 </div>
                 <div>
                     <p>Pending</p>
-                    <p class="amount">$0.00</p>
+                    <p class="amount">M <%= Trans.numOfWithDrawls((String)session.getAttribute("username")) %></p>
                 </div>
                 <div>
                     <p>Rejected</p>
-                    <p class="amount">$0.00</p>
+                    <p class="amount">M <%= Trans.numOfWithDrawls((String)session.getAttribute("username")) %></p>
                 </div>
             </div>
-            <div class="request-info">
-                <p>You've requested to withdraw $0.00. Where $0.00 is just initiated but not submitted.</p>
-            </div>
-        </div>
 
         <!-- Total Loan Section -->
         <div class="section">
@@ -180,7 +179,7 @@
             <div class="status">
                 <div>
                     <p>Pending</p>
-                    <p class="amount">$0.00</p>
+                    <p class="amount">M <%= Trans.sum((String)session.getAttribute("username")) %></p>
                 </div>
                 <div>
                     <p>Running</p>
@@ -195,9 +194,7 @@
                     <p class="amount">$0.00</p>
                 </div>
             </div>
-            <div class="request-info">
-                <p>You've 0 Loans. Which is 0 Running & 0 is Pending & 0 is Rejected & 0 is Completed.</p>
-            </div>
+           
         </div>
     </div>
 </body>

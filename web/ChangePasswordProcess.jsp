@@ -23,7 +23,7 @@
     }
 
     Connection connect = null;
-    PreparedStatement pstmt = null;
+    Statement stmt = null;
     ResultSet rs = null;
 
     try {
@@ -32,12 +32,11 @@
 
         // Establish the database connection
         connect = DriverManager.getConnection(url, dbUser, dbPass);
+        stmt = connect.createStatement();
 
         // Retrieve the current password from the database
-        String query = "SELECT pass FROM customers WHERE username = ?";
-        pstmt = connect.prepareStatement(query);
-        pstmt.setString(1, username);
-        rs = pstmt.executeQuery();
+        String query = "SELECT pass FROM customers WHERE username = '" + username + "'";
+        rs = stmt.executeQuery(query);
 
         if (rs.next()) {
             String dbPassword = rs.getString("pass");
@@ -45,16 +44,13 @@
             // Verify the current password
             if (currentPassword.equals(dbPassword)) {
                 // Update the password in the database
-                String updateQuery = "UPDATE customers SET pass = ? WHERE username = ?";
-                pstmt = connect.prepareStatement(updateQuery);
-                pstmt.setString(1, newPassword);
-                pstmt.setString(2, username);
+                String updateQuery = "UPDATE customers SET pass = '" + newPassword + 
+                                    "' WHERE username = '" + username + "'";
 
-                int rowsUpdated = pstmt.executeUpdate();
-                if (rowsUpdated > 0)
-                {
-                    out.println("changed password.");
-                    response.sendRedirect("Login.html"); // Redirect to login if session is invalid
+                int rowsUpdated = stmt.executeUpdate(updateQuery);
+                if (rowsUpdated > 0) {
+                    out.println("Password changed successfully.");
+                    response.sendRedirect("Login.html");
                     return;
                 } else {
                     out.println("Failed to change password.");
@@ -72,11 +68,11 @@
         if (rs != null) {
             try { rs.close(); } catch (SQLException e) { /* Ignored */ }
         }
-        if (pstmt != null) {
-            try { pstmt.close(); } catch (SQLException e) { /* Ignored */ }
+        if (stmt != null) {
+            try { stmt.close(); } catch (SQLException e) { /* Ignored */ }
         }
         if (connect != null) {
             try { connect.close(); } catch (SQLException e) { /* Ignored */ }
         }
     }
-%>
+%> 

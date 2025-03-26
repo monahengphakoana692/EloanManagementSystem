@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page pageEncoding="UTF-8" %>
+<%@ page session="true" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -173,10 +174,12 @@
     </script>
 </head>
 <body id="bodyy">
-
+<%
+    String username = (String)session.getAttribute("username");
+%>
 <div class="containerr">
     <h2 class="text-center text-primary">Apply for a Loan</h2>
-    <form action="processLoan.jsp" method="post" onsubmit="return validateForm();">
+    <form action="processLoan.jsp" method="post" ">
         
         <div class="mb-3">
             <label class="form-label1">Full Name</label>
@@ -207,6 +210,7 @@
         <div class="mb-3">
             <label class="form-label1">Loan Amount (Min: 1,000 - Max: 5,000,000)</label>
             <input type="number" id="amount" name="amount" class="form-control" placeholder="Enter loan amount"required>
+            <input type="hidden" name="username" value="<%= username %>">
         </div>
 
         <div>

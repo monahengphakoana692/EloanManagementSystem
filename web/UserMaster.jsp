@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page session="true" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -177,7 +178,7 @@
             <ul>
                 <li><a href="#" onclick="callJSPMethods('dashboardAd')">Dashboard</a></li>
                 <li><a href="#" onclick="callJSPMethods('manageUsers')">Manage Users</a></li>
-                <li><a href="#" onclick="callJSPMethods('categories')">Categories</a></li>
+                
                 <li><a href="#" onclick="callJSPMethods('loanPlans')">Loan Plans</a></li>
                 <li>
                     <select onchange="callJSPMethods(this.value)">
@@ -185,22 +186,15 @@
                         <option value="pendingloans">Pending Loans</option>
                         <option value="runningLoans">Running Loans</option>
                         <option value="allLoans">All Loans</option>
-                        <option value="dueLoans">Due Loans</option>
+                       
                         <option value="paidLoans">Paid Loans</option>
                         <option value="rejectedLoans">Rejected Loans</option>
                     </select>
                 </li>
-                <li><a href="#" onclick="callJSPMethods('paymentGateways')">Payment Gateways</a></li>
                 <li><a href="#" onclick="callJSPMethods('deposits')">Deposits</a></li>
                 <li><a href="#" onclick="callJSPMethods('withdrawals')">Withdrawals</a></li>
                 <li><a href="#" onclick="callJSPMethods('supportTickets')">Support Tickets</a></li>
-                <li><a href="#" onclick="callJSPMethods('reports')">Reports</a></li>
-                <li><a href="#" onclick="callJSPMethods('subscribers')">Subscribers</a></li>
-                <li><a href="#" onclick="callJSPMethods('generalSettings')">General Settings</a></li>
-                <li><a href="#" onclick="callJSPMethods('chatJobSettings')">Chat Job Settings</a></li>
-                <li><a href="#" onclick="callJSPMethods('systemConfiguration')">System Configuration</a></li>
-                <li><a href="#" onclick="callJSPMethods('logoAndFavicon')">Logo & Favicon</a></li>
-                <li><a href="#" onclick="callJSPMethods('socialCredentials')">Social Credentials</a></li>
+                <li><a href="#" onclick="callJSPMethods('ChangePassoword')">change password</a></li>
                 <li><a href="#" onclick="callJSPMethods('logout')">Logout</a></li>
             </ul>
         </div>

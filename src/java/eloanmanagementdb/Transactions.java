@@ -188,6 +188,66 @@ public class Transactions implements Serializable {
     public String getExceptionMessage() {
         return exceptionMessage;
     }
+    
+    public int numOfDeposits(String username)
+    {
+        int Deposits = 0;
+        try
+        {
+        String query = "select sum(Amount) from Transactions where Tra_type='dep' AND username='" + username  +"'";
+        
+        rs = statement.executeQuery(query);
+        
+        if(rs.next())
+        {
+            Deposits = rs.getInt(1);
+        }
+        }catch(Exception e)
+        {
+            exceptionMessage = "counting trans Error: " + e.toString();
+        }
+        return Deposits;
+    }
+    
+    public int numOfWithDrawls(String username)
+    {
+        int Deposits = 0;
+        try
+        {
+        String query = "select sum(Amount) from Transactions where Tra_type='withd' AND username='" + username  +"'";
+        
+        rs = statement.executeQuery(query);
+        
+        if(rs.next())
+        {
+            Deposits = rs.getInt(1);
+        }
+        }catch(Exception e)
+        {
+            exceptionMessage = "counting trans Error: " + e.toString();
+        }
+        return Deposits;
+    }
+    
+    public int sum(String username)
+    {
+        int Deposits = 0;
+        try
+        {
+        String query = "select sum(Amount) from Transactions where username='" + username  +"'";
+        
+        rs = statement.executeQuery(query);
+        
+        if(rs.next())
+        {
+            Deposits = rs.getInt(1);
+        }
+        }catch(Exception e)
+        {
+            exceptionMessage = "counting trans Error: " + e.toString();
+        }
+        return Deposits;
+    }
 
     // Close the database connection
     public String closeConnection() {
