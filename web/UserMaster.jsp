@@ -172,23 +172,20 @@
         <div class="menu">
             <div class="menu-header">
                 <h1>Standard Bank Loan</h1>
-                <div class="balance">
-                    Balance: $<jsp:getProperty name="Transactions" property="balance" />
-                </div>
-            </div>
+               </div>
             
             <div class="action-buttons">
-                <button class="btn btn-deposit" onclick="callJSPMethods('DespositMethod')">Deposits</button>
-                <button class="btn btn-withdraw" onclick="callJSPMethods('WithDrawMethod')">Withdraws</button>
+                <button class="btn btn-deposit" onclick="callJSPMethods('DespositMethod')">view Deposits</button>
+                <button class="btn btn-withdraw" onclick="callJSPMethods('WithDrawMethod')">view Withdraws</button>
             </div>
             
             <ul class="menu-list">
                 <li><a href="#" onclick="callJSPMethods('dashboardAd')">Dashboard</a></li>
-                <li><a href="#" onclick="callJSPMethods('TakeLoans')">Take Loan</a></li>
-                <li><a href="#" onclick="callJSPMethods('Myloans')">Loans</a></li>
+                
+                <li><a href="#" onclick="callJSPMethods('Viewloans')">Loans</a></li>
                 <li><a href="#" onclick="callJSPMethods('Transactions')">Transactions</a></li>
-                <li><a href="#" onclick="callJSPMethods('Tickets')">Support Ticket</a></li>
-                <li><a href="#" onclick="callJSPMethods('ApplyForm')">Apply Form</a></li>
+                
+                
                 <li><a href="#" onclick="callJSPMethods('Profile')">Profile</a></li>
                 <li><a href="#" onclick="callJSPMethods('ChangePassoword')">Change Password</a></li>
                 <li><a href="#" onclick="callJSPMethods('Logout')">Logout</a></li>
@@ -220,7 +217,7 @@
     <script>
         function callJSPMethods(pageName) {
             // Validate pageName to prevent XSS
-            const validPages = ['dashboardAd', 'TakeLoans', 'Myloans', 'DespositMethod', 
+            const validPages = ['dashboardAd', 'TakeLoans', 'Viewloans', 'DespositMethod', 
                               'WithDrawMethod', 'Transactions', 'Tickets', 'ApplyForm', 
                               'Profile', 'ChangePassoword', 'Logout'];
             
