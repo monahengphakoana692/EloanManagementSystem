@@ -135,6 +135,49 @@ public class Loans implements Serializable
         }
     }
     
+    
+    public void fetchLoanData2(String username) {
+        try {
+            String query = "SELECT * FROM loans where username = ?";
+            pstmt = connect.prepareStatement(query);
+            pstmt.setString(1, username);
+            rs = pstmt.executeQuery();
+            
+            username1.clear();
+            loantype1.clear();
+            date1.clear();
+            loanNum1.clear();
+            status1.clear();
+            loanAmount1.clear();
+            dueAmount1.clear();
+            amountPaid1.clear();
+            
+            while(rs.next())
+            {
+                this.username1.add(rs.getString("username"));
+                this.loantype1.add(rs.getString("loantype"));
+                this.date1.add(rs.getString("Date"));
+                this.loanNum1.add( rs.getString("loanNum"));
+                this.status1.add( rs.getString("status"));
+                this.loanAmount1.add( rs.getFloat("loanAmount"));
+                this.dueAmount1.add( rs.getFloat("DueAmount"));
+                this.amountPaid1.add( rs.getFloat("amountPaid"));
+                this.fullname.add(rs.getString("fullNames"));
+                this.email.add(rs.getString("email"));
+                
+            } 
+        } catch (Exception e) {
+            exceptionMessage = "Fetch Data Error: " + e.toString();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+            } catch (SQLException e) {
+                exceptionMessage = "Closing Error: " + e.toString();
+            }
+        }
+    }
+    
     // Getters
     public int getSize()
     {
@@ -232,4 +275,34 @@ public class Loans implements Serializable
         }
         return exceptionMessage;
     }
+    
+    public int count()
+  {
+      int count = 0;
+      try
+      {
+          //select count(status) from loans where status='pending'
+          String query = "select count(status) from loans where status='pending'";
+        pstmt = connect.prepareStatement(query);
+        rs = pstmt.executeQuery();
+        if(rs.next())
+        {
+            count = rs.getInt(1);
+        }
+                
+        
+      }catch(Exception e)
+      {
+          exceptionMessage = "Fetch Data Error: " + e.toString();
+      }  finally {
+        try {
+            if (rs != null) rs.close();
+            if (pstmt != null) pstmt.close();
+        } catch (SQLException e) {
+            exceptionMessage = "Closing Error: " + e.toString();
+        }
+    }
+      
+      return count;
+  }
 }

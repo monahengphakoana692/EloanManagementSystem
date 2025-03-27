@@ -123,8 +123,104 @@ public class Transactions implements Serializable {
             }
         }
     }
+    
+    
+    public void fetchTransactionData() {
+        try {
+            String query = "select* from transactions";
+            pstmt = connect.prepareStatement(query);
+            
+            rs = pstmt.executeQuery();
 
+            // Clear previous data
+            username1.clear();
+            traType1.clear();
+            date1.clear();
+            accNum1.clear();
+            traNum1.clear();
+            amount1.clear();
+            balance1.clear();
 
+            // Fetch data
+            while (rs.next()) {
+                username1.add(rs.getString("username"));
+                traType1.add(rs.getString("Tra_type"));
+                date1.add(rs.getString("Date"));
+                accNum1.add(rs.getString("accNum"));
+                traNum1.add(rs.getString("tra_num"));
+                amount1.add(rs.getFloat("Amount"));
+                balance1.add(rs.getFloat("Balance"));
+            }
+        } catch (Exception e) {
+            exceptionMessage = "Fetch Data Error: " + e.toString();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+            } catch (SQLException e) {
+                exceptionMessage = "Closing Error: " + e.toString();
+            }
+        }
+    }
+  public int countDep()
+  {
+      int count = 0;
+      try
+      {
+          //select count(status) from loans where status='pending'
+          String query = "select count(Tra_type) from transactions where Tra_type='dep'";
+        pstmt = connect.prepareStatement(query);
+        rs = pstmt.executeQuery();
+        if(rs.next())
+        {
+            count = rs.getInt(1);
+        }
+                
+        
+      }catch(Exception e)
+      {
+          exceptionMessage = "Fetch Data Error: " + e.toString();
+      }  finally {
+        try {
+            if (rs != null) rs.close();
+            if (pstmt != null) pstmt.close();
+        } catch (SQLException e) {
+            exceptionMessage = "Closing Error: " + e.toString();
+        }
+    }
+      
+      return count;
+  }
+  
+  public int countWithd()
+  {
+      int count = 0;
+      try
+      {
+          //select count(status) from loans where status='pending'
+          String query = "select count(Tra_type) from transactions where Tra_type='withd'";
+        pstmt = connect.prepareStatement(query);
+        rs = pstmt.executeQuery();
+        if(rs.next())
+        {
+            count = rs.getInt(1);
+        }
+                
+        
+      }catch(Exception e)
+      {
+          exceptionMessage = "Fetch Data Error: " + e.toString();
+      }  finally {
+        try {
+            if (rs != null) rs.close();
+            if (pstmt != null) pstmt.close();
+        } catch (SQLException e) {
+            exceptionMessage = "Closing Error: " + e.toString();
+        }
+    }
+      
+      return count;
+  }
     // Getters
     public int getSize()
     {

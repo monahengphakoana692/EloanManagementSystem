@@ -68,7 +68,8 @@ public class Customers implements Serializable {
             this.username = "N/A";
             this.pass = "N/A";
         }
-    } catch (Exception e) {
+    } catch (Exception e)
+    {
         exceptionMessage = "Fetch Data Error: " + e.toString();
     } finally {
         try {
@@ -82,6 +83,35 @@ public class Customers implements Serializable {
 
 
     // Getters
+  public int count()
+  {
+      int count = 0;
+      try
+      {
+          //select count(status) from loans where status='pending'
+          String query = "select count(username) from customers";
+        pstmt = connect.prepareStatement(query);
+        rs = pstmt.executeQuery();
+        if(rs.next())
+        {
+            count = rs.getInt(1);
+        }
+                
+        
+      }catch(Exception e)
+      {
+          exceptionMessage = "Fetch Data Error: " + e.toString();
+      }  finally {
+        try {
+            if (rs != null) rs.close();
+            if (pstmt != null) pstmt.close();
+        } catch (SQLException e) {
+            exceptionMessage = "Closing Error: " + e.toString();
+        }
+    }
+      
+      return count;
+  }
   public String getDistrict() {
     return district;
 }

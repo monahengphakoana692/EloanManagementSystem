@@ -66,7 +66,9 @@
     <div class="container4">
         <h1>My Loans</h1>
         <jsp:useBean id="loans" class="eloanmanagementdb.Loans" scope="application"/>
-        <%  loans.fetchLoanData((String)session.getAttribute("username"));%>
+        <%  loans.fetchLoanData2((String)session.getAttribute("username"));
+            int size = loans.getSize();
+        %>
         <!-- Loan Details Table -->
         <table>
             <thead>
@@ -75,21 +77,34 @@
                     <th>Date</th>
                     <th>Loan Number</th>
                     <th>Status</th>
-                    <th>Loan Amount</th>
-                    <th>Amount Due</th>
+                    <th>Loan Amount($)</th>
+                    <th>Amount Due($)</th>
                 </tr>
             </thead>
+            
             <tbody>
+                <%
+                for(int i = 0; i < size; i++){
+            %>
                 <tr>
-                    <td><jsp:getProperty name="loans" property="loantype"/></td>
-                    <td> <jsp:getProperty name="loans" property="date"/></td>
-                    <td><jsp:getProperty name="loans" property="loanNum"/></td>
-                    <td class="status"><jsp:getProperty name="loans" property="status"/></td>
-                    <td><jsp:getProperty name="loans" property="loanAmount"/></td>
-                    <td class="amount-due">$<jsp:getProperty name="loans" property="dueAmount"/>(Need to pay)</td>
+                    <td><%= loans.getLoantype(i)%></td>
+                    
+                    <td> <%= loans.getDate(i)%></td>
+                    
+                    <td><%= loans.getLoanNum(i)%></td>
+                    
+                    <td class="status"><%= loans.getStatus(i)%></td>
+                    
+                    <td><%= loans.getLoanAmount(i)%></td>
+                    
+                    <td class="amount-due"><%= loans.getDueAmount(i)%>(Need to pay)</td>
                 </tr>
                 <!-- Add more rows as needed -->
+                <%
+                }
+            %>
             </tbody>
+            
         </table>
     </div>
 </body>

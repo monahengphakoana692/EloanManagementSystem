@@ -191,7 +191,7 @@
                 <li><a href="#" onclick="callJSPMethods('ApplyForm')">Apply Form</a></li>
                 <li><a href="#" onclick="callJSPMethods('Profile')">Profile</a></li>
                 <li><a href="#" onclick="callJSPMethods('ChangePassoword')">Change Password</a></li>
-                <li><a href="#" onclick="callJSPMethods('Logout')">Logout</a></li>
+                <li><a href="index.html" ">Logout</a></li>
             </ul>
         </div>
 
@@ -220,9 +220,9 @@
     <script>
         function callJSPMethods(pageName) {
             // Validate pageName to prevent XSS
-            const validPages = ['dashboard', 'TakeLoans', 'Myloans', 'DespositMethod', 
+            const validPages = ['dashboard', 'ApplicationForm', 'Myloans', 'DespositMethod', 
                               'WithDrawMethod', 'Transactions', 'Tickets', 'ApplyForm', 
-                              'Profile', 'ChangePassoword', 'Logout'];
+                              'Profile', 'ChangePassoword'];
             
             if (!validPages.includes(pageName)) {
                 console.error('Invalid page request');

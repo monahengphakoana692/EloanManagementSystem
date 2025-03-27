@@ -84,12 +84,13 @@
                     <th>email </th>
                 </tr>
             </thead>
-            <%
-                int i = 0;
-                while(i<loans.getSize())
+            
+            <tbody>
+                <%
+                
+                for(int i =0; i<loans.getSize(); i++)
                 {
             %>
-            <tbody>
                 <tr>
                     <td><%= loans.getUsername(i)%></td>
                     <td><%= loans.getLoantype(i)%></td>
@@ -103,10 +104,11 @@
                     <td><%= loans.getEmail(i)%></td>
                 </tr>
                 <!-- Add more rows as needed -->
-            </tbody>
-            <%
-                i++;
+                <%
+                
                 }%>
+            </tbody>
+            
         </table>
     </div>
 </body>

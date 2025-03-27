@@ -112,11 +112,14 @@
     </style>
 </head>
 <body id="body1">
+    <jsp:useBean id="users" class="eloanmanagementdb.Customers" />
+    <jsp:useBean id="loans" class="eloanmanagementdb.Loans" />
+    <jsp:useBean id="transaction" class="eloanmanagementdb.Transactions"/>
     <div class="dashboard-container">
         <!-- Total Users Card -->
         <div class="card card-total-users">
             <h3>Total Users</h3>
-            <p>3</p>
+            <p><%= users.count() %></p>
             <img src="usersIcons.png" alt="Users Icon">
         </div>
 
@@ -137,65 +140,53 @@
         <!-- Running Loan Card -->
         <div class="card card-running-loan">
             <h3>Running Loan</h3>
-            <p>$10,000</p>
+            <p><%= loans.count()%></p>
             <img src="runloanicon.jpeg" alt="Running Loan Icon">
         </div>
 
         <!-- Total Deposits Card -->
         <div class="card card-total-deposits">
             <h3>Total Deposits</h3>
-            <p>$50,000</p>
+            <p><%= transaction.countDep() %></p>
             <img src="runloanicon.jpeg" alt="Total Deposits Icon">
         </div>
 
         <!-- Total Withdrawn Card -->
         <div class="card card-total-withdrawn">
             <h3>Total Withdrawn</h3>
-            <p>$20,000</p>
+            <p><%= transaction.countWithd() %></p>
             <img src="runloanicon.jpeg" alt="Total Withdrawn Icon">
         </div>
 
         <!-- Pending Deposits Card -->
         <div class="card card-pending-deposits">
             <h3>Pending Deposits</h3>
-            <p>$0.00</p>
+            <p><%= transaction.countDep() %></p>
             <img src="runloanicon.jpeg" alt="Pending Deposits Icon">
         </div>
 
         <!-- Pending Withdrawals Card -->
         <div class="card card-pending-withdrawals">
             <h3>Pending Withdrawals</h3>
-            <p>$0.00</p>
+            <p><%= transaction.countWithd() %></p>
             <img src="runloanicon.jpeg"" alt="Pending Withdrawals Icon">
         </div>
 
         <!-- Rejected Deposits Card -->
         <div class="card card-rejected-deposits">
             <h3>Rejected Deposits</h3>
-            <p>$0.00</p>
+            <p><%= transaction.countDep() %></p>
             <img src="runloanicon.jpeg" alt="Rejected Deposits Icon">
         </div>
 
         <!-- Rejected Withdrawals Card -->
         <div class="card card-rejected-withdrawals">
             <h3>Rejected Withdrawals</h3>
-            <p>$0.00</p>
+            <p><%= transaction.countWithd() %></p>
             <img src="runloanicon.jpeg" alt="Rejected Withdrawals Icon">
         </div>
 
-        <!-- Withdrawal Charge Card -->
-        <div class="card card-withdrawal-charge">
-            <h3>Withdrawal Charge</h3>
-            <p>$0.00</p>
-            <img src="runloanicon.jpeg" alt="Withdrawal Charge Icon">
-        </div>
-
-        <!-- Payloads Card -->
-        <div class="card card-payloads">
-            <h3>Payloads</h3>
-            <p>$0.00</p>
-            <img src="runloanicon.jpeg" alt="Payloads Icon">
-        </div>
+        
     </div>
 </body>
 </html>
